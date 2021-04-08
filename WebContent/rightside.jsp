@@ -27,7 +27,7 @@
 						<h4>해당글의 게시판 내용 ex: 자유게시판</h4>
 						<ul class="status">
 							<li class="vote active">종아요 수</li>
-							<li class="comment active">댓글 수</li>
+							<li class="comment active">댓글 </li>
 						</ul>
 						<hr>
 						</a>
