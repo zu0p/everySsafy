@@ -1,0 +1,8 @@
+@charset "UTF-8";
+#container{
+	position:absolute;
+	top:40%;
+	left:30%;
+	width:400px;
+	height:400px;
+}
