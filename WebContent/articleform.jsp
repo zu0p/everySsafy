@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -138,73 +139,14 @@
 					<select name="search_type"><option value="4">전체</option>
 						<option value="3">해시태그</option>
 						<option value="2">글 제목</option>
-						<option value="1">글 내용</option></select><input name="keyword"
+						<option value="1">글 내용  </option></select><input name="keyword"
 						placeholder="검색어를 입력하세요." class="text">
 				</form>
 				<a href="/389148/p/2" class="next">다음</a>
 			</div>
 		</div>
 		<hr>
-		<div class="rightside">
-			<div class="card">
-			
-				<div class="board">
-					<h3>
-						<a>실시간 인기 글</a>
-					</h3>
-					<a class="article" href="/389148/v/181315806"><p class="title">실시간 인기글 제목!!</p>
-						<p class="small"> 실시간 인기글 내용!!!</p>
-						<h4>해당글의 게시판 내용 ex: 자유게시판</h4>
-						<ul class="status">
-							<li class="vote active">종아요 수</li>
-							<li class="comment active">댓글 수</li>
-						</ul>
-						<hr>
-						</a>
-						
-						<a class="article" href="/389148/v/181315806"><p class="title">실시간 인기글 제목!!</p>
-						<p class="small"> 실시간 인기글 내용!!!</p>
-						<h4>해당글의 게시판 내용 ex: 자유게시판</h4>
-						<ul class="status">
-							<li class="vote active">종아요 수</li>
-							<li class="comment active">댓글 수</li>
-						</ul>
-						<hr>
-						</a>
-				</div>
-				
-			</div>
-			<div class="card">
-				<div class="board">
-					<h3>
-						<a href="/hotarticle">HOT 게시물<span>더 보기 // HOT 게시물로 이동하는 링크</span></a>
-					</h3>
-					<a class="list" href="/389148/v/181335190"><time>게시물 업로드 시간 </time>
-						<p>HOT 게시물 제목만 1</p>
-						<hr></a>
-						
-					<a class="list" href="/389148/v/181335190"><time>게시물 업로드 시간 </time>
-						<p>HOT 게시물 제목만 2 </p>
-						<hr></a>
-						
-					<a class="list" href="/389148/v/181335190"><time>게시물 업로드 시간 </time>
-						<p>HOT 게시물 제목만 3 </p>
-						<hr></a>
-					
-				</div>
-			</div>
-			<div class="card">
-				<div class="board">
-					<h3>
-						<a href="/bestarticle">BEST 게시판<span>더 보기 // BEST 게시물로 이동하는 링크</span></a>
-						<a class="list" href="/389148/v/181335190">
-						<p>Best 게시물 제목만 1 </p>
-						<hr></a>
-					</h3>
-				</div>
-			</div>
-			
-		</div>
+			<%@ include file="/rightside.jsp"%>
 	</div>
 
 </body>
