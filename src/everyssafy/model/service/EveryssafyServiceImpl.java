@@ -1,6 +1,7 @@
 package everyssafy.model.service;
 
 import everyssafy.model.UserDto;
+import everyssafy.model.dao.EveryssafyDaoImpl;
 
 public class EveryssafyServiceImpl implements EveryssafyService {
 	private static EveryssafyService everyssafyService;
@@ -12,14 +13,13 @@ public class EveryssafyServiceImpl implements EveryssafyService {
 	@Override
 	public UserDto login(String userId, String userPwd) {
 		// TODO Auto-generated method stub
-		UserDto ret=null;
-		return ret;
+		return EveryssafyDaoImpl.getEveryssafyDao().login(userId, userPwd);
 	}
 
 	@Override
 	public void register(String userId, String userPwd, String userName, String userNickName) {
 		// TODO Auto-generated method stub
-
+		EveryssafyDaoImpl.getEveryssafyDao().register(userId, userPwd, userName, userNickName);
 	}
 
 }
