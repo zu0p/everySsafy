@@ -25,7 +25,7 @@
 				<span>지금 에브리싸피를 시작해보세요!!</span>
 			</i>
 		</div>		
-		<form class="loginForm">
+		<form class="loginForm" method="post">
 			<input type="hidden" name="action" id="action" value="login">
 			<div class="form-group">
 				<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디">
@@ -34,7 +34,7 @@
 				<input type="password" class="form-control" id="userPwd" name="userPwd" placeholder="비밀번호">
 			</div>
 			<div class="form-group">
-				<button type="button" class="btn btn-danger btn-block" onclick="javascript:void()">로그인</button>
+				<button type="button" class="btn btn-danger btn-block" onclick="javascript:login()">로그인</button>
 			</div>			
 			<div class="form-check">
 				<label class="form-check-label">

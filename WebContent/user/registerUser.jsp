@@ -6,8 +6,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
-	<title>에브리 싸피 로그인</title>
+	<title>에브리 싸피 회원가입</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="${root}/css/registerUser.css" type="text/css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -18,27 +17,32 @@
 </head>
 <body>
 	<div id="container">
-		<form class="registerForm">
+		<h1>건강하세요</h1>
+		<form class="registerForm"  method="post">
 			<input type="hidden" name="action" id="action" value="register">
-			<div class="form-group">
-				<label for="userId"> 아이디 :</label>
+			<div class="idGroup form-group">
+				<label for="userId"> 아이디</label>
 				<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디">
-				<input class="btn btn-danger btn-block" onclick="javascript:checkId()">중복확인</button>
+				<button class="btn btn-danger " onclick="javascript:checkId()">중복확인</button>
 			</div>
 			<div class="form-group">
-				<label for="userPwd"> 비밀번호 :</label>
-				<input type="password" class="form-control" id="userpwd" name="userPwd" placeholder="비밀번호">
+				<label for="userPwd"> 비밀번호</label>
+				<input type="password" class="form-control" id="userPwd" name="userPwd" placeholder="비밀번호">
 			</div>
 			<div class="form-group">
-				<label for="userName"> 이름 :</label>
+				<label for="userPwd"> 비밀번호확인</label>
+				<input type="password" class="form-control" id="chkPwd" name="chkPwd" placeholder="비밀번호확인">
+			</div>
+			<div class="form-group">
+				<label for="userName"> 이름</label>
 				<input type="text" class="form-control" id="userName" name="userName" placeholder="이름">
 			</div>
 			<div class="form-group">
-				<label for="userNickName"> 닉네임 :</label>
+				<label for="userNickName"> 닉네임</label>
 				<input type="text" class="form-control" id="userNickName" name="userNickName" placeholder="닉네임">
 			</div>
 			<div class="form-group">
-				<button type="button" class="btn btn-danger btn-block" onclick="javascript:void()">회원가입</button>
+				<button type="button" class="btn btn-danger btn-block" onclick="javascript:register()">회원가입</button>
 			</div>	
 		</form>
 	</div>
