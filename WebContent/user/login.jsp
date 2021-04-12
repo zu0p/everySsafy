@@ -20,9 +20,9 @@
 	<!-- 로그인,회원가입,아이디/비밀번호 찾기 이용 -->
 	<!-- 로그인해야 사이트 이용가능 -->
 	<div id="container">
-		<div style="font-size:10px;" align="right">
-			<i class="fas fa-user-secret fa-10x" style="color:#CD1039;">
-				<a style="color:black;font-size:13px;">지금 싸피타임을 시작해보세요!!</a>
+		<div class="logoPart">
+			<i class="fas fa-user-secret fa-10x">
+				<span>지금 에브리싸피를 시작해보세요!!</span>
 			</i>
 		</div>		
 		<form class="loginForm">
@@ -31,19 +31,21 @@
 				<input type="text" class="form-control" id="userId" name="userName" placeholder="아이디">
 			</div>
 			<div class="form-group">
-				<input type="text" class="form-control" id="userId" name="userName" placeholder="비밀번호">
+				<input type="password" class="form-control" id="userId" name="userName" placeholder="비밀번호">
 			</div>
 			<div class="form-group">
-				<button type="button" class="btn btn-primary" onclick="javascript:void()">로그인</button>
+				<button type="button" class="btn btn-danger btn-block" onclick="javascript:void()">로그인</button>
 			</div>			
 			<div class="form-check">
 				<label class="form-check-label">
 					<input type="checkbox" class="form-check-input" value="idSafe">로그인 유지
 				</label>
+				<a href="findUser.jsp">아이디/비밀번호 찾기</a>
 			</div>
-			<a href="findUser.jsp">아이디/비밀번호 찾기</a>
-			<p>싸피타임이 처음 이신가요?</p>
-			<a href="registerUser.jsp">회원가입</a>
+			<div class="registerLabel">
+				<span>에브리싸피가 처음 이신가요?</span>
+				<a href="registerUser.jsp">회원가입</a>				
+			</div>
 		</form>
 	</div>
 
