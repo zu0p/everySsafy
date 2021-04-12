@@ -1,8 +1,33 @@
 @charset "UTF-8";
 #container{
 	position:absolute;
-	top:40%;
-	left:30%;
+	top:20%;
+	left:35%;
 	width:400px;
 	height:400px;
+}
+.logoPart{
+	font-size:10px;
+	margin-bottom:10px;
+}
+
+.logoPart>i{
+	color:#CD1039
+}
+.logoPart>i>span{
+	color:black;font-size:18px;
+}
+.form-check input{
+	float:left;
+}
+.form-check a{
+	color:black;
+	float:right;
+}
+.registerLabel{
+	text-align:center;
+	padding-top:20px;
+}
+.registerLabel a{
+	color:#CD1039;
 }
