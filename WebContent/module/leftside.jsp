@@ -1,9 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-			<div class="card pconly">
-			    <form class="login">
-			      <h3>커뮤니티 이용을 위해<br><strong>로그인</strong>이 필요합니다!</h3>
-			      <a href="/login" class="button login">로그인</a>
-			      <a href="/register" class="button register">에브리타임 회원가입</a>
-			    </form>
-			</div>
+			  <div class="card pconly">
+		        <form class="logged">
+		          <img src="https://cf-fpi.everytime.kr/0.png" class="picture">
+		          <p class="nickname">주0__</p>
+		          <p class="school">박주영</p>
+		          <p class="school">zu0p</p>
+		          <ul class="buttons">
+		            <li><a href="/my">내 정보</a></li>
+		            <li><a href="/user/logout">로그아웃</a></li>
+		          </ul>
+		          <hr>
+		        </form>
+		      </div>
+		      <div class="card">
+		        <div class="menus">
+		          <a href="/myarticle" class="myarticle">내가 쓴 글</a>
+		          <a href="/mycommentarticle" class="mycommentarticle">댓글 단 글</a>
+		          <a href="/myscrap" class="myscrap">내 스크랩</a>
+		          <hr>
+		        </div>
+		      </div>

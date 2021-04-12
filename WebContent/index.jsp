@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="./css/common.partial.css"/>
 <link rel="stylesheet" type="text/css" href="./css/container.community.css"/>
 <link rel="stylesheet" type="text/css" href="./css/container.article.css"/>
+<script type="text/javascript" src="./js/main.js"></script>
 </head>
 <body>
 	<jsp:include page="./module/nav.jsp"></jsp:include>
