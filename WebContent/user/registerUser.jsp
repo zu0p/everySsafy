@@ -6,9 +6,10 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<title>Insert title here</title>
 	<title>에브리 싸피 로그인</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="${root}/css/login.css" type="text/css">
+	<link rel="stylesheet" href="${root}/css/registerUser.css" type="text/css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
@@ -16,37 +17,30 @@
 	<script src="https://kit.fontawesome.com/fa7b781275.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<!-- 인덱스 페이지  -->
-	<!-- 로그인,회원가입,아이디/비밀번호 찾기 이용 -->
-	<!-- 로그인해야 사이트 이용가능 -->
 	<div id="container">
-		<div class="logoPart">
-			<i class="fas fa-user-secret fa-10x">
-				<span>지금 에브리싸피를 시작해보세요!!</span>
-			</i>
-		</div>		
-		<form class="loginForm">
-			<input type="hidden" name="action" id="action" value="login">
+		<form class="registerForm">
+			<input type="hidden" name="action" id="action" value="register">
 			<div class="form-group">
+				<label for="userId"> 아이디 :</label>
 				<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디">
+				<input class="btn btn-danger btn-block" onclick="javascript:checkId()">중복확인</button>
 			</div>
 			<div class="form-group">
-				<input type="password" class="form-control" id="userPwd" name="userPwd" placeholder="비밀번호">
+				<label for="userPwd"> 비밀번호 :</label>
+				<input type="password" class="form-control" id="userpwd" name="userPwd" placeholder="비밀번호">
 			</div>
 			<div class="form-group">
-				<button type="button" class="btn btn-danger btn-block" onclick="javascript:void()">로그인</button>
-			</div>			
-			<div class="form-check">
-				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input" value="idSafe">로그인 유지
-				</label>
-				<a href="findUser.jsp">아이디/비밀번호 찾기</a>
+				<label for="userName"> 이름 :</label>
+				<input type="text" class="form-control" id="userName" name="userName" placeholder="이름">
 			</div>
+			<div class="form-group">
+				<label for="userNickName"> 닉네임 :</label>
+				<input type="text" class="form-control" id="userNickName" name="userNickName" placeholder="닉네임">
+			</div>
+			<div class="form-group">
+				<button type="button" class="btn btn-danger btn-block" onclick="javascript:void()">회원가입</button>
+			</div>	
 		</form>
-		<div class="registerLabel">
-			<span>에브리싸피가 처음 이신가요?</span>
-			<a href="registerUser.jsp">회원가입</a>				
-		</div>
 	</div>
 
 </body>
