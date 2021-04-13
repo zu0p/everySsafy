@@ -26,7 +26,7 @@
 			</i>
 		</div>		
 		<form class="loginForm" method="post">
-			<input type="hidden" name="action" id="action" value="login">
+			<input type="hidden" name="act" id="act" value="login">
 			<div class="form-group">
 				<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디">
 			</div>

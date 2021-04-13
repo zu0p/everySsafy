@@ -14,12 +14,55 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 	<script src="https://kit.fontawesome.com/fa7b781275.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		function register(){
+			let checkId=RegExp( /^[a-zA-Z]+[A-Za-z0-9_]{5,15}$/gi);
+			if($('#userId').val()==''){
+				alert('아이디 비우는 행위 멈춰!!');
+				$('#userId').focus();
+				return;
+			}
+			if(!checkId.test($('#userId').val())){
+				alert('아이디는 영문자로 시작하며 대소문자를 구분하지 않으며 숫자와 특수문자_를 포함가능합니다.');
+				$('#userId').val('');
+				$('#userId').focus();
+				return;
+			}
+			if($('#userPwd').val()==''){
+				alert('비밀번호 비우는 행위 멈춰!!');
+				$('#userPwd').focus();
+				return;
+			}
+			if($('#chkPwd').val()==''){
+				alert('비밀번호 확인 비우는 행위 멈춰!!');
+				$('#chkPwd').focus();
+				return;
+			}
+			if($('#chkPwd').val()!=$('#userPwd').val()){
+				alert('비밀번호가 다릅니다!!');
+				$('#chkPwd').focus();
+				return;
+			}
+			if($('#userName').val()==''){
+				alert('이름 비우는 행위 멈춰!!');
+				$('#userName').focus();
+				return;
+			}
+			if($('#userNickName').val()==''){
+				alert('닉네임 비우는 행위 멈춰!!');
+				$('#userNickName').focus();
+				return;
+			}
+			$("#registerForm").attr("action", "${root}/user").submit();
+		}
+		
+	</script>
 </head>
 <body>
 	<div id="container">
 		<h1>건강하세요</h1>
-		<form class="registerForm"  method="post">
-			<input type="hidden" name="action" id="action" value="register">
+		<form id="registerForm"  method="post" >
+			<input type="hidden" name="act" id="act" value="register">
 			<div class="idGroup form-group">
 				<label for="userId"> 아이디</label>
 				<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디">
