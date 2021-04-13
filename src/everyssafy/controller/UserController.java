@@ -22,6 +22,8 @@ public class UserController extends HttpServlet {
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String act = request.getParameter("act");
+		
+		System.out.println(request.getPathInfo());
 		if("logout".equals(act)) {
 			logout(request, response);
 		} else if("".equals(act)) {
