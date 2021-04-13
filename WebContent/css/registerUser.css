@@ -1,0 +1,22 @@
+@charset "UTF-8";
+#container{
+	position:absolute;
+	top:20%;
+	left:38%;
+	width:400px;
+	height:400px;
+}
+#container h1{
+	text-align:center;
+	
+}
+.idGroup label{
+	display:block;
+}
+.idGroup input{
+	display:inline-block;
+	width:76%;
+}
+.idGroup button{
+	margin-bottom:5px;
+}
