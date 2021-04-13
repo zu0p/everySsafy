@@ -18,10 +18,10 @@ public class tempclass {
             insertMember.append("insert into user (userId, userPwd, userName, userNickname) \n");
             insertMember.append("values (?, ?, ?, ?)");
             pstmt = conn.prepareStatement(insertMember.toString());
-            pstmt.setString(1, "bbb");
-            pstmt.setString(2, "bbb");
-            pstmt.setString(3, "bbb");
-            pstmt.setString(4, "bbb");
+            pstmt.setString(1, "muyaho");
+            pstmt.setString(2, "muyaho");
+            pstmt.setString(3, "무야호");
+            pstmt.setString(4, "무야호");
             pstmt.executeUpdate();
             
          } catch(Exception e) {
