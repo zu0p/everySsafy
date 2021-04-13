@@ -14,6 +14,12 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 	<script src="https://kit.fontawesome.com/fa7b781275.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		function login(){
+			if($('#loginForm'))
+		}
+		
+	</script>
 </head>
 <body>
 	<!-- 인덱스 페이지  -->
@@ -25,7 +31,7 @@
 				<span>지금 에브리싸피를 시작해보세요!!</span>
 			</i>
 		</div>		
-		<form class="loginForm" method="post">
+		<form id="loginForm" method="post">
 			<input type="hidden" name="act" id="act" value="login">
 			<div class="form-group">
 				<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디">
