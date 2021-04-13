@@ -2,6 +2,7 @@ package everyssafy.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import everyssafy.model.UserDto;
@@ -17,7 +18,42 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public UserDto login(String userId, String userPwd) {
 		// TODO Auto-generated method stub
-		return null;
+		UserDto userDto=null;
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			conn=DBUtil.getConnect();
+			String sql="select userName,userNickName from user where userId=? and userPwd=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPwd);
+			pstmt.executeQuery();
+			if(rs.next()) {
+				userDto.setUserId(userId);
+				userDto.setUserPwd(userPwd);
+				userDto.setUserName(rs.getString("userName"));
+				userDto.setUserNickName("userNickName");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(conn!=null) {
+				try {
+					conn.close();
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return userDto;
 	}
 
 	@Override
