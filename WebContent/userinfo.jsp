@@ -13,7 +13,6 @@
 </head>
 <body>
 	<div>
-
 		<div class="container">
 			<section>
 				<div class="title">
