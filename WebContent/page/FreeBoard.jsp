@@ -4,13 +4,13 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>에브리싸피</title>
+<title>에브리싸피 - 자유게시판 </title>
 <meta charset="utf-8">
-<link type="text/css" href="./css/common.css" rel="stylesheet">
-<link type="text/css" href="./css/common.partial.css" rel="stylesheet">
-<link type="text/css" href="./css/container.article.css"
+<link type="text/css" href="../css/common.css" rel="stylesheet">
+<link type="text/css" href="../css/common.partial.css" rel="stylesheet">
+<link type="text/css" href="../css/container.article.css"
 	rel="stylesheet">
-<link type="text/css" href="./css/container.community.css"
+<link type="text/css" href="../css/container.community.css"
 	rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon">
 <!--[if lt IE 9]>
@@ -35,6 +35,7 @@ function writebtn() {
 </script>
 </head>
 <body style="">
+	
 	<div id="container" class="article">
 		<input type="hidden" id="isUser" value="1"> <input
 			type="hidden" id="boardId" value="389148">
@@ -126,7 +127,7 @@ function writebtn() {
 		</div>
 		<hr>
 		<div class="rightside">
-			<jsp:include page="./module/rightside.jsp"></jsp:include>
+			<jsp:include page="../module/rightside.jsp"></jsp:include>
 		</div>
 	</div>
 
