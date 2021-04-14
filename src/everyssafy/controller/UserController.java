@@ -32,7 +32,27 @@ public class UserController extends HttpServlet {
 			logout(request, response);
 		} else if("register".equals(act)) {
 			register(request,response);
+		} else if("login".equals(act)) {
+			login(request,response);
 		}
+	}
+
+	private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String userId=request.getParameter("userId");
+		String userPwd=request.getParameter("userPwd");
+		String PATH=null;
+		UserService service=UserServiceImpl.getUserService();
+		UserDto userDto=service.login(userId, userPwd);
+		if(userDto!=null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("user", userDto);
+		}else {
+			request.setAttribute("msg", "로그인 실패 문의요망");
+			PATH="/error/error500";
+		}
+		RequestDispatcher disp=request.getRequestDispatcher(PATH); //로그인 넘겨보내기
+		disp.forward(request, response);
 	}
 
 	private void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -53,8 +73,7 @@ public class UserController extends HttpServlet {
 			PATH="/error/error500";
 		}
 		RequestDispatcher disp=request.getRequestDispatcher(PATH); //로그인 넘겨보내기
-		disp.forward(request, response);
-		
+		disp.forward(request, response);	
 	}
 
 	private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
