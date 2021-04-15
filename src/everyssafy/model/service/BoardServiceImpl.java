@@ -12,14 +12,10 @@ public class BoardServiceImpl implements BoardService{
 		return boardService;
 	}
 	
-	@Override
-	public int getBoardId(ArticleDto articleDto) {
-		return BoardDaoImpl.getBoardDao().getBoardId(articleDto);
-	}
 
 	@Override
 	public String getBoardTitle(int BoardId) {
-		return BoardDaoImpl.getBoardDao().getBoardTitle(BoardId);
+		return  BoardDaoImpl.getBoardDao().getBoardTitle(BoardId);
 	}
 
 }

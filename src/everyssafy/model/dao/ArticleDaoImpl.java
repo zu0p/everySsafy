@@ -1,6 +1,11 @@
 package everyssafy.model.dao;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import everyssafy.model.ArticleDto;
+import util.DBUtil;
 
 public class ArticleDaoImpl implements ArticleDao{
 
@@ -13,8 +18,29 @@ public class ArticleDaoImpl implements ArticleDao{
 	
 	@Override
 	public void registerArticle(ArticleDto ArticleDto) {
-		// TODO Auto-generated method stub
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		int rs=0;
 		
+		try {
+			conn=DBUtil.getConnect();
+			//insert into article (articleId,articleTitle,articleContent,articleDate,articleLike,boardId,userId)
+			//values (1,"안녕하세요","안녕하세요 여기가 자유 게시판 인가요?",now(),0,101,"dbtlwns");
+//			String sql=;
+//			pstmt=conn.prepareStatement(sql);
+//			pstmt.setString(1, ArticleDto.getUserId());
+//			pstmt.setString(2, ArticleDto.getUserPwd());
+//			pstmt.setString(3, ArticleDto.getUserName());
+//			pstmt.setString(4, ArticleDto.getUserNickName());
+			
+			int result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBUtil.close( conn , pstmt);
+		}
+
 	}
 
 	@Override

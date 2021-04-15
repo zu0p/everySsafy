@@ -17,35 +17,7 @@ public class BoardDaoImpl implements BoardDao{
 		if(boardDao == null) boardDao = new BoardDaoImpl();
 		return boardDao;
 	}
-	@Override
-	public int getBoardId(ArticleDto articleDto) {
-		int boardid = 0;
-
-		Connection conn=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-
-		try {
-			conn=DBUtil.getConnect();
-			//sql문 삽입필요..
-			String sql = " ";
-			
-			pstmt=conn.prepareStatement(sql);
-			pstmt.executeQuery();
-			
-			if(rs.next()) {
-				boardid = Integer.parseInt(rs.getString(1));
-			}
-				
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			DBUtil.close(rs ,conn , pstmt);
-		}
-
-		return boardid;
-	}
-
+	
 	@Override
 	public String getBoardTitle(int BoardId) {
 		String BoardTitle="";
@@ -57,10 +29,13 @@ public class BoardDaoImpl implements BoardDao{
 		try {
 			conn=DBUtil.getConnect();
 			//sql문 삽입필요..
-			String sql = " ";
-			pstmt=conn.prepareStatement(sql);
-			pstmt.executeQuery();
+			// select boardTitle from board where boardid = 101;
+			String sql = "select boardTitle from board where boardid = ?";
 			
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, BoardId);
+			
+			pstmt.executeQuery();
 			if(rs.next()) {
 				BoardTitle = rs.getString(1);
 			}
