@@ -32,8 +32,7 @@
 				<span>지금 에브리싸피를 시작해보세요!!</span>
 			</i>
 		</div>		
-		<form id="loginForm" method="post">
-			<input type="hidden" name="act" id="act" value="login">
+		<form id="loginForm" method="post" action="${ root }/login.do">
 			<div class="form-group">
 				<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디">
 			</div>
