@@ -5,6 +5,7 @@ public class ArticleDto {
 	private int articleId;
 	private String articleTitle;
 	private String articleContent;
+
 	private int articleLike;
 	private Date articleDate;
 	private int boardId;
