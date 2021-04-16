@@ -57,36 +57,39 @@
 			if(!chkIdFlag) return;
 			$("#registerForm").attr("action", "${root}/user").submit();
 		}
-		function checkId(){
-			var userId=$('#userId').val();
-			alert('중복확인 클릭');ㅣ
+		function checkUserId(){
 			$.ajax({
-				method:'post',
 				url:'${root}/user',
+				method:'post',
 				data:{
-					"act":"chkUserId","userId":userId
-					},
+					"act":"chkUserId","userId":$('#userId').val()
+				},
 				dataType:'json',
-				success: function(data){
-					alert('2');
-					$.each(data,function(key,value){
-						alert(value);
-					});
+				success:function(data){
+					if(data==0){
+						alert('이미 존재하는 아이디 입니다.');
+						$('#userId').focus();
+					}else{
+						chkIdFlag=true;
+						alert('사용 가능한 아이디 입니다.');
+						$('#userId').attr('readonly',true);
+					}
 				}
-			});
+			});	
 		}
+
 		
 	</script>
 </head>
 <body>
 	<div id="container">
 		<h1>건강하세요</h1>
-		<form id="registerForm"  method="post" >
+		<form id="registerForm"  method="post" onsubmit="return false;">
 			<input type="hidden" name="act" id="act" value="register">
 			<div class="idGroup form-group">
 				<label for="userId"> 아이디</label>
 				<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디">
-				<button class="btn btn-danger " onclick="javascript:checkId()" name="chkId" id="chkId" >중복확인</button>
+				<button class="btn btn-danger " onclick="checkUserId()"name="chkId" id="chkId" >중복확인</button>
 			</div>
 			<div class="form-group">
 				<label for="userPwd"> 비밀번호</label>

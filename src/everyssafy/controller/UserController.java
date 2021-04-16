@@ -38,7 +38,6 @@ public class UserController extends HttpServlet {
 		} else if("login".equals(act)) {
 			login(request,response);
 		}else if("chkUserId".equals(act)) {
-			System.out.println(1);
 			chkId(request,response);
 		}
 		
@@ -46,11 +45,9 @@ public class UserController extends HttpServlet {
 
 	private void chkId(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("application/json; charset=utf-8");
+		response.setContentType("application/json; charset=utf8");
 		String userId=request.getParameter("userId");
 		System.out.println("ID:" + userId);
-		PrintWriter out=response.getWriter();
 		String ans="";
 		if(UserServiceImpl.getUserService().chkId(userId)) {
 			ans="1";
@@ -59,9 +56,8 @@ public class UserController extends HttpServlet {
 		}
 		Gson gson=new Gson();
 		String ret=gson.toJson(ans);
-		System.out.println(ret);
-		out.println(ret);
-		out.flush();
+		PrintWriter out=response.getWriter();
+		out.print(ret);
 	}
 
 	private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
