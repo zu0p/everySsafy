@@ -16,7 +16,17 @@
 	<script src="https://kit.fontawesome.com/fa7b781275.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 		function login(){
-			if($('#loginForm'))
+			if($('#userId').val()==''){
+				alert('아이디 비우는 행위 멈춰!!');
+				$('#userId').focus();
+				return;
+			}
+			if($('#userPwd').val()==''){
+				alert('비밀번호 비우는 행위 멈춰!!');
+				$('#userPwd').focus();
+				return;
+			}
+			$('#loginForm').attr("action", "${root}/user").submit();
 		}
 		
 	</script>

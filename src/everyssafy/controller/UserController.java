@@ -1,6 +1,7 @@
 package everyssafy.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
 
 import everyssafy.model.UserDto;
 import everyssafy.model.service.UserService;
@@ -34,7 +37,31 @@ public class UserController extends HttpServlet {
 			register(request,response);
 		} else if("login".equals(act)) {
 			login(request,response);
+		}else if("chkUserId".equals(act)) {
+			System.out.println(1);
+			chkId(request,response);
 		}
+		
+	}
+
+	private void chkId(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("application/json; charset=utf-8");
+		String userId=request.getParameter("userId");
+		System.out.println("ID:" + userId);
+		PrintWriter out=response.getWriter();
+		String ans="";
+		if(UserServiceImpl.getUserService().chkId(userId)) {
+			ans="1";
+		}else {
+			ans="0";
+		}
+		Gson gson=new Gson();
+		String ret=gson.toJson(ans);
+		System.out.println(ret);
+		out.println(ret);
+		out.flush();
 	}
 
 	private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,6 +74,7 @@ public class UserController extends HttpServlet {
 		if(userDto!=null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", userDto);
+			PATH="/index.jsp";
 		}else {
 			request.setAttribute("msg", "로그인 실패 문의요망");
 			PATH="/error/error500";
