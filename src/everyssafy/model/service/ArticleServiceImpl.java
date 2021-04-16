@@ -1,5 +1,6 @@
 package everyssafy.model.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import everyssafy.model.ArticleDto;
@@ -22,23 +23,23 @@ public class ArticleServiceImpl implements ArticleService{
 	}
 
 	@Override
-	public void modifyArticle(int ArticleId, int BoardId) {
-		ArticleDaoImpl.getArticleDao().modifyArticle(ArticleId, BoardId);
+	public void modifyArticle( ArticleDto articleDto) {
+		ArticleDaoImpl.getArticleDao().modifyArticle( articleDto);
 	}
 
 	@Override
-	public ArticleDto getArticle(int ArticleId, int BoardId) {
-		return ArticleDaoImpl.getArticleDao().getArticle(ArticleId, BoardId);
+	public ArticleDto getArticle(int ArticleId) {
+		return ArticleDaoImpl.getArticleDao().getArticle(ArticleId);
 	}
 
 	@Override
-	public void deleteArticle(int ArticleId, int BoardId) {
-		ArticleDaoImpl.getArticleDao().deleteArticle(ArticleId, BoardId);
+	public void deleteArticle(int ArticleId) {
+		ArticleDaoImpl.getArticleDao().deleteArticle(ArticleId);
 	}
 
 	@Override
-	public List<ArticleDto> getListArticle(int ArticleId, int BoardId) {
-		return ArticleDaoImpl.getArticleDao().getListArticle(ArticleId, BoardId);
+	public ArrayList<ArticleDto> getListArticle( int BoardId) {
+		return ArticleDaoImpl.getArticleDao().getListArticle(BoardId);
 	}
 
 }
