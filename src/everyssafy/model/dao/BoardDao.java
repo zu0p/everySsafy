@@ -2,5 +2,8 @@ package everyssafy.model.dao;
 import everyssafy.model.ArticleDto;
 
 public interface BoardDao {
-	String getBoardTitle(int BoardId);	
+	
+	int getBoardId(ArticleDto articleDto);
+	String getBoardTitle(int BoardId);
+	
 }

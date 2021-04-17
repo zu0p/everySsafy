@@ -14,7 +14,11 @@ import everyssafy.model.UserDto;
 import everyssafy.model.service.UserService;
 import everyssafy.model.service.UserServiceImpl;
 
-public class UserController implements Controller{
+/**
+ * Servlet implementation class UserController
+ */
+@WebServlet(urlPatterns= {"/user", "/my"})
+public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,7 +28,6 @@ public class UserController implements Controller{
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String act = request.getParameter("act");
-		System.out.println(request.getLocalName());
 		if("logout".equals(act)) {
 			logout(request, response);
 		} else if("register".equals(act)) {
@@ -78,14 +81,7 @@ public class UserController implements Controller{
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
-		response.sendRedirect(request.getContextPath()+"/index.jsp");
-	}
-
-	@Override
-	public String requestHandle(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return null;
+		response.sendRedirect(request.getContextPath()+"index.jsp");
 	}
 
 }

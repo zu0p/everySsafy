@@ -16,9 +16,18 @@
 	<script src="https://kit.fontawesome.com/fa7b781275.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 		function login(){
-			if($('#loginForm'))
+			if (document.getElementById("userId").value == "") {
+	    		alert("아이디 입력!!!");
+	    		return;
+	    	} else if (document.getElementById("userPwd").value == "") {
+	    		alert("비밀번호 입력!!!");
+	    		return;
+	    	} else {
+	    		console.log("됨?");
+	    		document.getElementById("loginform").action = "${root}/main?act=login";
+	    		document.getElementById("loginform").submit();
+	    	}
 		}
-		
 	</script>
 </head>
 <body>
@@ -32,7 +41,8 @@
 				<span>지금 에브리싸피를 시작해보세요!!</span>
 			</i>
 		</div>		
-		<form id="loginForm" method="post" action="${ root }/login.do">
+		<form id="loginForm" method="post">
+			<input type="hidden" name="act" id="act" value="login">
 			<div class="form-group">
 				<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디">
 			</div>

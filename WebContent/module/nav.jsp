@@ -6,7 +6,10 @@
         <a href="/"><img src=""></a>
         <p><span class="name multiple">에브리SSAFY</span><span class="subname">HelloSSAFY</span></p>
       </div>
-      
+      <div id="account">
+        <a href="/login" class="button">로그인</a>
+        <a href="/register" class="button red">회원가입</a>
+      </div>
       <ul id="menu">
         <li class="active"><a href="/">게시판</a></li>
         <li><a href="/timetable">시간표</a></li>

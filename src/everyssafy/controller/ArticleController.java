@@ -8,14 +8,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class ArticleController implements Controller {
+@WebServlet(name = "Aticle", urlPatterns = { "/Aticle" })
+public class ArticleController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
 
-	@Override
-	public String requestHandle(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		doGet(request, response);
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
+	
+	
 
 }
