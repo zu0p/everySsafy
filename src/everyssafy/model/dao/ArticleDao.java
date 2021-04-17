@@ -1,4 +1,5 @@
 package everyssafy.model.dao;
+
 import java.util.ArrayList;
 import java.util.List;
 import everyssafy.model.ArticleDto;
