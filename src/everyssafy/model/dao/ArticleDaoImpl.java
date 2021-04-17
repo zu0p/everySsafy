@@ -59,7 +59,6 @@ public class ArticleDaoImpl implements ArticleDao{
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, articleDto.getArticleContent());
 			pstmt.setInt(2, articleDto.getArticleId());
-			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -120,8 +119,6 @@ public class ArticleDaoImpl implements ArticleDao{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
-			DBUtil.close( conn , pstmt);
 		}
 	}
 
@@ -146,21 +143,11 @@ public class ArticleDaoImpl implements ArticleDao{
 			
 			while(rs.next()) {
 				articleDto = new  ArticleDto();
-				articleDto.setArticleId(rs.getInt("ArticleId"));
-				articleDto.setArticleDate(rs.getDate("ArticleDate"));
-				articleDto.setArticleContent(rs.getString("articleContent"));
-				articleDto.setArticleLike(rs.getInt("ArticelLike"));
-				articleDto.setArticleTitle(rs.getString("ArticleTitle"));
-				articleDto.setBoardId(rs.getInt("BoardId"));
-				articleDto.setUserId(rs.getString("userId"));
 				
-				articleList.add(articleDto);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			DBUtil.close(rs ,conn , pstmt);
 		}
 
 		return articleList;
