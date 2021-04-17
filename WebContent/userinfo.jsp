@@ -24,7 +24,7 @@
 			<section data-v-cd48e290="">
 				<div data-v-cd48e290="" class="title">
 					<h1 data-v-cd48e290="">내 정보</h1>
-					<a data-v-cd48e290="" href="/user/logout" class="logout">로그아웃</a>
+					<a data-v-cd48e290="" href="/user/logout.do" class="logout">로그아웃</a>
 				</div>
 				<div data-v-cd48e290="" class="profile">
 					<img data-v-cd48e290="" src="https://cf-fpi.everytime.kr/0.png">

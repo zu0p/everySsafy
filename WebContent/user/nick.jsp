@@ -11,16 +11,21 @@
 
 <title>Every SSAFY-내 정보</title>
 <link rel="stylesheet" type="text/css" href="../css/nickName.css"/>
-<link type="text/css" rel="stylesheet" href="./css/userinfo.css"/>
-<link type="text/css" rel="stylesheet" href="./css/userinfo_2.css"/>
+<link type="text/css" rel="stylesheet" href="../css/userinfo.css"/>
+<link type="text/css" rel="stylesheet" href="../css/userinfo_2.css"/>
+<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+<link rel="stylesheet" type="text/css" href="../css/common.partial.css"/>
+<link rel="stylesheet" type="text/css" href="../css/container.community.css"/>
+<link rel="stylesheet" type="text/css" href="../css/container.article.css"/>
 </head>
 <body>
+	<jsp:include page="/module/nav.jsp"></jsp:include>
 	<form data-v-34dbaf39="" class="container">
 		<section data-v-34dbaf39="">
 			<h1 data-v-34dbaf39="">닉네임 설정</h1>
 			<div data-v-34dbaf39="" class="input">
 				<div data-v-34dbaf39="" class="label">
-					<label data-v-34dbaf39="">닉네임</label>
+					<label data-v-34dbaf39="">${ user.nickName}</label>
 				</div>
 				<input data-v-34dbaf39="" type="text" maxlength="10" placeholder="닉네임" autocomplete="off" class="">
 			</div> 
