@@ -15,6 +15,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 	<script src="https://kit.fontawesome.com/fa7b781275.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
+		var chkIdFlag=false;
 		function register(){
 			let checkId=RegExp( /^[a-zA-Z]+[A-Za-z0-9_]{5,15}$/gi);
 			if($('#userId').val()==''){
@@ -53,20 +54,42 @@
 				$('#userNickName').focus();
 				return;
 			}
+			if(!chkIdFlag) return;
 			$("#registerForm").attr("action", "${root}/user").submit();
 		}
+		function checkUserId(){
+			$.ajax({
+				url:'${root}/user',
+				method:'post',
+				data:{
+					"act":"chkUserId","userId":$('#userId').val()
+				},
+				dataType:'json',
+				success:function(data){
+					if(data==0){
+						alert('이미 존재하는 아이디 입니다.');
+						$('#userId').focus();
+					}else{
+						chkIdFlag=true;
+						alert('사용 가능한 아이디 입니다.');
+						$('#userId').attr('readonly',true);
+					}
+				}
+			});	
+		}
+
 		
 	</script>
 </head>
 <body>
 	<div id="container">
 		<h1>건강하세요</h1>
-		<form id="registerForm"  method="post" >
+		<form id="registerForm"  method="post" onsubmit="return false;">
 			<input type="hidden" name="act" id="act" value="register">
 			<div class="idGroup form-group">
 				<label for="userId"> 아이디</label>
 				<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디">
-				<button class="btn btn-danger " onclick="javascript:checkId()">중복확인</button>
+				<button class="btn btn-danger " onclick="checkUserId()"name="chkId" id="chkId" >중복확인</button>
 			</div>
 			<div class="form-group">
 				<label for="userPwd"> 비밀번호</label>
