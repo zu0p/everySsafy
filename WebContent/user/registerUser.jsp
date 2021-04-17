@@ -15,7 +15,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 	<script src="https://kit.fontawesome.com/fa7b781275.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
-		var chkIdFlag=false;
 		function register(){
 			let checkId=RegExp( /^[a-zA-Z]+[A-Za-z0-9_]{5,15}$/gi);
 			if($('#userId').val()==''){
@@ -78,19 +77,18 @@
 				}
 			});	
 		}
-
 		
 	</script>
 </head>
 <body>
 	<div id="container">
 		<h1>건강하세요</h1>
-		<form id="registerForm"  method="post" onsubmit="return false;">
+		<form id="registerForm"  method="post" >
 			<input type="hidden" name="act" id="act" value="register">
 			<div class="idGroup form-group">
 				<label for="userId"> 아이디</label>
 				<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디">
-				<button class="btn btn-danger " onclick="checkUserId()"name="chkId" id="chkId" >중복확인</button>
+				<button class="btn btn-danger " onclick="javascript:checkId()">중복확인</button>
 			</div>
 			<div class="form-group">
 				<label for="userPwd"> 비밀번호</label>

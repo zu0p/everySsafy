@@ -28,9 +28,12 @@ public class UserDaoImpl implements UserDao {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			pstmt.setString(2, userPwd);
-			rs=pstmt.executeQuery();
+			pstmt.executeQuery();
 			if(rs.next()) {
-				userDto=new UserDto(userId,userPwd,rs.getString("userName"),rs.getString("userNickName"));
+				userDto.setUserId(userId);
+				userDto.setUserPwd(userPwd);
+				userDto.setUserName(rs.getString("userName"));
+				userDto.setUserNickName("userNickName");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -91,38 +94,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public boolean chkId(String userId) {
 		// TODO Auto-generated method stub
-		UserDto userDto=null;
-		Connection conn=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		try {
-			conn=DBUtil.getConnect();
-			String sql="select userId from user where userId=?";
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, userId);
-			rs=pstmt.executeQuery();
-			if(rs.next()) {
-				return false;
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			if(pstmt!=null) {
-				try {
-					pstmt.close();
-				}catch(SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if(conn!=null) {
-				try {
-					conn.close();
-				}catch(SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return true;
+		return false;
 	}
 
 }

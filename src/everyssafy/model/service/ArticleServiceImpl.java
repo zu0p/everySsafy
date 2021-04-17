@@ -38,7 +38,7 @@ public class ArticleServiceImpl implements ArticleService{
 	}
 
 	@Override
-	public ArrayList<ArticleDto> getListArticle( int BoardId) {
+	public List<ArticleDto> getListArticle( int BoardId) {
 		return ArticleDaoImpl.getArticleDao().getListArticle(BoardId);
 	}
 
