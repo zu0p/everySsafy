@@ -42,19 +42,7 @@ public class UserController implements Controller{
 
 	private void chkId(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
-		response.setContentType("application/json; charset=utf8");
-		String userId=request.getParameter("userId");
-		System.out.println("ID:" + userId);
-		String ans="";
-		if(UserServiceImpl.getUserService().chkId(userId)) {
-			ans="1";
-		}else {
-			ans="0";
-		}
-		Gson gson=new Gson();
-		String ret=gson.toJson(ans);
-		PrintWriter out=response.getWriter();
-		out.print(ret);
+		
 	}
 
 	private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -26,7 +26,7 @@
 				$('#userPwd').focus();
 				return;
 			}
-			$('#loginForm').attr("action", "${root}/user").submit();
+			$('#loginForm').attr("action", "${root}/login.do").submit();
 		}
 		
 	</script>

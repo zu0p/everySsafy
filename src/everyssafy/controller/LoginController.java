@@ -24,9 +24,10 @@ public class LoginController implements Controller{
 		if(userDto!=null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", userDto);
+			PATH="/index.jsp";
 		}else {
 			request.setAttribute("msg", "로그인 실패 문의요망");
-			PATH="/error/error500";
+			PATH=request.getContextPath()+"/error/error500.jsp";
 		}
 		return PATH;
 	}
