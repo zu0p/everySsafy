@@ -151,6 +151,7 @@ public class ArticleDaoImpl implements ArticleDao{
 				articleDto.setBoardId(rs.getInt("BoardId"));
 				articleDto.setUserId(rs.getString("userId"));
 				articleList.add(articleDto);
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
