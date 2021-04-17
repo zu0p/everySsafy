@@ -24,13 +24,13 @@ public class RegistController implements Controller {
 		String userNickName=request.getParameter("userNickName");
 		UserService service=UserServiceImpl.getUserService();
 		UserDto userDto=new UserDto(userId, userPwd, userName, userNickName);
-		String PATH=request.getContextPath();
+		String PATH=null;
 		if(service.register(userDto)) {
 			session.setAttribute("user", userDto); //세션정보 넘겨서
-			PATH+="/index.jsp";
+			PATH="/index.jsp";
 		}else{
 			request.setAttribute("msg", "회원가입 실패 문의요망");
-			PATH+="/error/error500.jsp";
+			PATH="/error/error500.jsp";
 		}	
 		return PATH;
 	}
