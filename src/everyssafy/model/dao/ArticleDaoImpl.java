@@ -134,7 +134,7 @@ public class ArticleDaoImpl implements ArticleDao{
 
 		try {
 			conn = DBUtil.getConnect();
-			String sql = "select * from article" ;
+			String sql = "select * from article";
 			sql +="where BoardId = ?";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, BoardId);
