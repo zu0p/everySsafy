@@ -15,14 +15,16 @@
 	<jsp:include page="./module/nav.jsp"></jsp:include>
 	<jsp:include page="./module/subnav.jsp"></jsp:include>
 	<div id="container" class="community">
-		<div class="leftside">
-			<jsp:include page="./module/leftside.jsp"></jsp:include>
+		<div class="index">
+			<div class="leftside">
+				<jsp:include page="./module/leftside.jsp"></jsp:include>
+			</div>
+			<div class="main">
+				<jsp:include page="./page/main.jsp"></jsp:include>
+			</div>
 		</div>
 		<div class="rightside">
 			<jsp:include page="./module/rightside.jsp"></jsp:include>
-		</div>
-		<div class="main">
-			<jsp:include page="./page/main.jsp"></jsp:include>
 		</div>
 	</div>
 	<jsp:include page="./module/footer.jsp"></jsp:include>

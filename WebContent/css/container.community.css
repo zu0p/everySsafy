@@ -7,10 +7,10 @@
 	width: 100%; height: auto;
 }
 #container > div.rightside div.card,
-#container > div.leftside div.card {
+#container > div.index div.card {
 	margin-bottom: 5px; border: 1px solid #d6d6d6; background-color: #f9f9f9;
 }
-#container > div.main div.card {
+#container > div.index > div.main div.card {
 	float: left; margin: 0 5px 5px 0; width: 295px; border: 1px solid #e3e3e3; overflow: hidden; background-color: #fff;
 }
 
