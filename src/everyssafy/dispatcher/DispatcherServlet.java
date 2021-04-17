@@ -21,8 +21,11 @@ public class DispatcherServlet extends HttpServlet {
 		Controller controller = HandlerMapping.getMapping(path);
 		String returnURL = controller.requestHandle(request, response);
 		System.out.println(returnURL);
-		RequestDispatcher dispatcher = request.getRequestDispatcher(returnURL);
-		dispatcher.forward(request, response);
+		if(returnURL!=null) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher(returnURL);
+			dispatcher.forward(request, response);
+		}
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

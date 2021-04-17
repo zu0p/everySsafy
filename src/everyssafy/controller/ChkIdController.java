@@ -29,7 +29,7 @@ public class ChkIdController implements Controller{
 		String ret=gson.toJson(ans);
 		PrintWriter out=response.getWriter();
 		out.print(ret);
-		return "/registerUser.jsp";
+		return null;
 	}
 
 }
