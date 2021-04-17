@@ -17,7 +17,7 @@
 			<section>
 				<div class="title">
 					<h1>내 정보</h1>
-					<a href="/user/logout" class="logout">로그아웃</a>
+					<a href="/user/logout.do" class="logout">로그아웃</a>
 				</div>
 				<div class="profile">
 					<img src="https://cf-fpi.everytime.kr/0.png">
