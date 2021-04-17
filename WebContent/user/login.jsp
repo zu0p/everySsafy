@@ -16,9 +16,18 @@
 	<script src="https://kit.fontawesome.com/fa7b781275.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 		function login(){
-			if($('#loginForm'))
+			if (document.getElementById("userId").value == "") {
+	    		alert("아이디 입력!!!");
+	    		return;
+	    	} else if (document.getElementById("userPwd").value == "") {
+	    		alert("비밀번호 입력!!!");
+	    		return;
+	    	} else {
+	    		console.log("됨?");
+	    		document.getElementById("loginform").action = "${root}/main?act=login";
+	    		document.getElementById("loginform").submit();
+	    	}
 		}
-		
 	</script>
 </head>
 <body>
