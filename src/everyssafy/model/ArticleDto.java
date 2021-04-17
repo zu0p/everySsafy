@@ -12,6 +12,13 @@ public class ArticleDto {
 	private int boardId;
 	private String userId;
 	
+	
+	public String getArticleContent() {
+		return articleContent;
+	}
+	public void setArticleContent(String articleContent) {
+		this.articleContent = articleContent;
+	}
 	public int getArticleId() {
 		return articleId;
 	}
