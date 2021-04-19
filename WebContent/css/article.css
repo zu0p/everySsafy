@@ -1,0 +1,41 @@
+@charset "UTF-8";
+*{
+	margin:0px;
+	padding:0px;
+}
+h1,h2,h3{
+	margin:0px;
+	padding:0px;
+}
+header{
+	margin-top:10px;
+	padding:10px;
+	border:1px solid #d6d6d6;
+}
+.main{
+	margin-top:10px;
+	padding:10px;
+	border:1px solid #d6d6d6;
+}
+.article_info{
+	height:80px;
+}
+
+.article_member{
+	float:left;
+}
+.article_send{
+	float:right;
+}
+.article_send a{
+	color: #a6a6a6;
+}
+.article_member i{
+	color: #d6d6d6;
+	float:left;
+}
+.profile{
+	float:left;
+	text-align:right;
+}
+

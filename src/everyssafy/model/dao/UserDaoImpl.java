@@ -30,10 +30,7 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setString(2, userPwd);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				userDto.setUserId(userId);
-				userDto.setUserPwd(userPwd);
-				userDto.setUserName(rs.getString("userName"));
-				userDto.setUserNickName("userNickName");
+				userDto=new UserDto(userId,userPwd,rs.getString("userName"),rs.getString("userNickName"));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
