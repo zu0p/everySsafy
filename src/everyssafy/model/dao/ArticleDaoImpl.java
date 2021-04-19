@@ -27,15 +27,14 @@ public class ArticleDaoImpl implements ArticleDao{
 
 		try {
 			conn=DBUtil.getConnect();
-			String sql ="insert into article (articleTitle,articleContent,articleLike,boardId,userId)";
+			String sql ="insert into article (articleTitle,articleContent,boardId,userId)";
 			sql+= "values (?,?,?,?,?)";
 
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, articleDto.getArticleTitle());
 			pstmt.setString(2, articleDto.getArticleContent());
-			pstmt.setInt(3, articleDto.getArticleLike());
-			pstmt.setInt(4, articleDto.getBoardId());
-			pstmt.setString(5, articleDto.getUserId());
+			pstmt.setInt(3, articleDto.getBoardId());
+			pstmt.setString(4, articleDto.getUserId());
 			int result=pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
