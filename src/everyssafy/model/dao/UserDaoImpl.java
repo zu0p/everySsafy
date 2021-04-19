@@ -28,7 +28,7 @@ public class UserDaoImpl implements UserDao {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			pstmt.setString(2, userPwd);
-			pstmt.executeQuery();
+			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				userDto.setUserId(userId);
 				userDto.setUserPwd(userPwd);
@@ -95,6 +95,80 @@ public class UserDaoImpl implements UserDao {
 	public boolean chkId(String userId) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public UserDto chNick(String userId, String userNickName) {
+		UserDto userDto=null;
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			conn=DBUtil.getConnect();
+			String sql="update user set userNickNae=? where userId=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, userNickName);
+			pstmt.setString(2, userId);
+			pstmt.executeUpdate();
+			if(rs.next()) {
+				userDto.setUserId(userId);
+				userDto.setUserPwd(rs.getString("userPwd"));
+				userDto.setUserName(rs.getString("userName"));
+				userDto.setUserNickName(userNickName);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(conn!=null) {
+				try {
+					conn.close();
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return userDto;
+	}
+	@Override
+	public void chPass(String userId, String userPwd, String usernewPwd) {
+		UserDto userDto=null;
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			conn=DBUtil.getConnect();
+			String sql="update user set userPwd=? where userId=? and userPwd=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, usernewPwd);
+			pstmt.setString(2, userId);
+			pstmt.setString(3, userPwd);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(conn!=null) {
+				try {
+					conn.close();
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return;
 	}
 
 }
