@@ -15,7 +15,7 @@
 	<jsp:include page="./module/nav.jsp"></jsp:include>
 	<jsp:include page="./module/subnav.jsp"></jsp:include>
 	<div id="container" class="community">
-		<div class="index">
+		<div class="context" id="changeable">
 			<div class="leftside">
 				<jsp:include page="./module/leftside.jsp"></jsp:include>
 			</div>
@@ -23,8 +23,10 @@
 				<jsp:include page="./page/main.jsp"></jsp:include>
 			</div>
 		</div>
-		<div class="rightside">
-			<jsp:include page="./module/rightside.jsp"></jsp:include>
+		<div class="context">
+			<div class="rightside">
+				<jsp:include page="./module/rightside.jsp"></jsp:include>
+			</div>
 		</div>
 	</div>
 	<jsp:include page="./module/footer.jsp"></jsp:include>
