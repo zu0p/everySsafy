@@ -26,5 +26,15 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return UserDaoImpl.getUserDao().chkId(userId);
 	}
+	@Override
+	public UserDto chNick(String userId, String userNickName) {
+		// TODO Auto-generated method stub
+		return UserDaoImpl.getUserDao().chNick(userId, userNickName);
+	}
+	@Override
+	public void chPass(String userId, String userPwd, String usernewPwd) {
+		// TODO Auto-generated method stub
+		UserDaoImpl.getUserDao().chPass(userId, userPwd, usernewPwd);
+	}
 
 }

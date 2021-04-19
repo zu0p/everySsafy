@@ -3,6 +3,8 @@ package everyssafy.dispatcher;
 import java.util.HashMap;
 
 import everyssafy.controller.ArticleController;
+import everyssafy.controller.ChNickController;
+import everyssafy.controller.ChPassController;
 import everyssafy.controller.ChkIdController;
 import everyssafy.controller.Controller;
 import everyssafy.controller.LoginController;
@@ -17,6 +19,8 @@ public class HandlerMapping {
 		map.put("/register.do", new RegistController());
 		map.put("/article.do", new ArticleController());
 		map.put("/chkId.do", new ChkIdController());
+		map.put("/changeNick.do", new ChNickController());
+		map.put("/changePass.do", new ChPassController());
 	}
 	public static Controller getMapping(String path) {		
 		return map.get(path);

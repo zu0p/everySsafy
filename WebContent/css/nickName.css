@@ -14,11 +14,8 @@ form.container section div.input input{
 	background-color:#f9f9f9;
 	background-repeat:no-repeat;
 	background-position:right 8px center;
-	background-size:24px 24px
-}
-body.appwebview form.container{
-	padding-top:0
-}
+	background-size:24px 24px}
+body.appwebview form.container={padding-top:0}
 @media only screen and (min-width: 780px){
 	form.container{
 	padding-top:80px
@@ -37,8 +34,7 @@ form.container section{
 	box-sizing:border-box;
 	border:1px solid #ededed;
 	border-radius:12px;
-	margin:24px auto 0 auto;
-	width:480px
+	margin:24px auto 0 auto;width:480px
 	}
 }
 @media only screen and (min-width: 780px){
@@ -114,4 +110,3 @@ form.container section input{
 	font-weight:bold;
 	background-color:#c62917
 }
-
