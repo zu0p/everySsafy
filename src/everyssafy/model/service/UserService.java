@@ -8,4 +8,5 @@ public interface UserService {
 	boolean chkId(String userId);
 	UserDto chNick(String userId, String userNickName);
 	void chPass(String userId, String userPwd, String usernewPwd);
+	UserDto getUserInfo(String userId)throws Exception ;
 }

@@ -5,6 +5,7 @@ public class UserDto {
 	String userPwd;
 	String userName;
 	String userNickName;
+	public UserDto() {}
 	public UserDto(String userId, String userPwd, String userName, String userNickName) {
 		super();
 		this.userId = userId;

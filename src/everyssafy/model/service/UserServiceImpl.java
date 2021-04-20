@@ -1,5 +1,7 @@
 package everyssafy.model.service;
 
+import java.sql.SQLException;
+
 import everyssafy.model.UserDto;
 import everyssafy.model.dao.UserDaoImpl;
 
@@ -35,6 +37,10 @@ public class UserServiceImpl implements UserService {
 	public void chPass(String userId, String userPwd, String usernewPwd) {
 		// TODO Auto-generated method stub
 		UserDaoImpl.getUserDao().chPass(userId, userPwd, usernewPwd);
+	}
+	@Override
+	public UserDto getUserInfo(String userId) throws Exception {
+		return UserDaoImpl.getUserDao().getUserInfo(userId);
 	}
 
 }
