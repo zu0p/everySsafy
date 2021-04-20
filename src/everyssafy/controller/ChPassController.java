@@ -7,28 +7,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import everyssafy.model.UserDto;
 import everyssafy.model.service.UserService;
 import everyssafy.model.service.UserServiceImpl;
-
-public class LoginController implements Controller{
+public class ChPassController implements Controller{
 
 	@Override
 	public String requestHandle(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String userId=request.getParameter("userId");
+		HttpSession session = request.getSession();
+		String userId=(String)(session.getAttribute("userId"));
 		String userPwd=request.getParameter("userPwd");
+		String usernewPwd=request.getParameter("newuserPwd");
 		String PATH=null;
+
 		UserService service=UserServiceImpl.getUserService();
-		UserDto userDto=service.login(userId, userPwd);
-		if(userDto!=null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("user", userDto);
-			PATH="/index.jsp";
-		}else {
-			request.setAttribute("msg", "로그인 실패");
-			PATH="/error/error500.jsp";
-		}
+		service.chPass(userId, userPwd, usernewPwd);
+		PATH="/user/login.jsp";
 		return PATH;
 	}
 

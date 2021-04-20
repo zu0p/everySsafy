@@ -19,5 +19,5 @@ public interface ArticleService {
 	void deleteArticle(int ArticleId);
 	
 	//글 조회
-	ArrayList<ArticleDto> getListArticle(int BoardId);
+	List<ArticleDto> getListArticle(int BoardId);
 }
