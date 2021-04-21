@@ -21,8 +21,12 @@
 <!--[if lt IE 8]>
   <script src="/js/extensions.json3.min.js"></script>
   <![endif]-->
-<script type="text/javascript" async="" 
-	src="https://www.google-analytics.com/analytics.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/fa7b781275.js" crossorigin="anonymous"></script>
 	
 <script type="text/javascript">
 function writebtn() {
@@ -32,17 +36,22 @@ function writebtn() {
 		writebutton.style.display ="none"
 		return;
 }
+
+//localStorage.getItem("item");  로컬 스토리지에서  값얻오기
 </script>
 </head>
 <body style="">
-	<div id="container" class="article">
+    <!--  request로 저장 -->
+    <jsp:include page="./module/nav.jsp"></jsp:include>
+	
+	<div id="container" class="article"  style="margin-top: 100px;" >
 		<input type="hidden" id="isUser" value="1"> <input
 			type="hidden" id="boardId" value="389148">
 		<aside class="none">
 			<div class="title">
 				<a class="hamburger"></a>
 				<h1>
-					<a href="/389148">자유게시판</a>
+					<a href="/389148">{asd.title}</a>
 				</h1>
 			</div>
 		</aside>
@@ -79,6 +88,7 @@ function writebtn() {
 				<div class="clearBothOnly"></div>
 			</form>
 			<a id="writeArticleButton" onclick="javascript:writebtn();" >새 글을 작성해주세요!</a>
+			
 			<article>
 				<a class="article" href="/389148/v/181438459"><div
 						class="attachthumbnail"
