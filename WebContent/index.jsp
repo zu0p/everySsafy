@@ -9,7 +9,9 @@
 <link rel="stylesheet" type="text/css" href="./css/common.partial.css"/>
 <link rel="stylesheet" type="text/css" href="./css/container.community.css"/>
 <link rel="stylesheet" type="text/css" href="./css/container.article.css"/>
-<script type="text/javascript" src="./js/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
 </head>
 <body>
 	<jsp:include page="./module/nav.jsp"></jsp:include>

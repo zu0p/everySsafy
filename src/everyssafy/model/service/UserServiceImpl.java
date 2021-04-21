@@ -1,7 +1,5 @@
 package everyssafy.model.service;
 
-import java.sql.SQLException;
-
 import everyssafy.model.UserDto;
 import everyssafy.model.dao.UserDaoImpl;
 

@@ -11,6 +11,7 @@ import everyssafy.controller.GetListArticleController;
 import everyssafy.controller.LoginController;
 import everyssafy.controller.LogoutController;
 import everyssafy.controller.ModifyArticleController;
+import everyssafy.controller.MyPageController;
 import everyssafy.controller.RegistController;
 import everyssafy.controller.RegisterArticleController;
 
@@ -27,6 +28,7 @@ public class HandlerMapping {
 		map.put("/deleteArticle.do", new DeleteArticleController());
 		map.put("/changeNick.do", new ChNickController());
 		map.put("/changePass.do", new ChPassController());
+		map.put("/mypage.do", new MyPageController());
 
 	}
 	public static Controller getMapping(String path) {		

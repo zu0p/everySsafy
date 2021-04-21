@@ -1,6 +1,7 @@
 package everyssafy.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,14 +22,18 @@ public class MyPageController implements Controller {
 		String userId = ((UserDto)session.getAttribute("user")).getUserId();
 		try {
 			UserDto userDto = UserServiceImpl.getUserService().getUserInfo(userId);
-			PATH="/userinfo";
+			request.setAttribute("userInfo", userDto);
+			PATH="/userinfo.jsp";
+			PrintWriter out = response.getWriter();
+			out.println(PATH);
+			out.flush();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			PATH="/error/error500.jsp";
 			return PATH;
 		}
-		return PATH;
+		return null;
 	}
 
 }
