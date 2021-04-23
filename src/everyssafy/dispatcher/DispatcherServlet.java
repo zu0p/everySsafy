@@ -20,7 +20,7 @@ public class DispatcherServlet extends HttpServlet {
 		String path = uri.substring(uri.lastIndexOf("/"));
 		Controller controller = HandlerMapping.getMapping(path);
 		String returnURL = controller.requestHandle(request, response);
-		System.out.println(returnURL);
+		
 		if(returnURL!=null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(returnURL);
 			dispatcher.forward(request, response);

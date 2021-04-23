@@ -11,13 +11,16 @@ function clickMypage(){
 		method: "GET",
 		url: "${root}/mypage.do",
 		success: function(res){
-			console.log(res)
+			//console.log(res)
 			$('.community').empty()	
 			
-			//var newContents = $('<')
-			//$('.community').load("http://localhost:8080/tetetmp/userinfo.jsp");
-			
-			$('.community').load("http://localhost:8080/tetetmp/"+res);
+			let info = JSON.parse(res);
+			//console.log(info);
+			//console.log(info.user);
+			$('.community').load("http://localhost:8080/tetetmp/"+info.path, function(){
+				$('#info-id').text(info.user.userId);
+				$('#info-name').text(info.user.userName);
+			});
 		}
 	})
 }

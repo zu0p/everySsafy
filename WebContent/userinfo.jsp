@@ -21,9 +21,9 @@
 				</div>
 				<div class="profile">
 					<img src="https://cf-fpi.everytime.kr/0.png">
-					<h3>alswn8972</h3>
+					<h3><p id="info-id"></p></h3>
 					<p>
-						<span>강민주</span> / <span>ㅎㅎ</span>
+						<span><p id="info-name"></p></span> / <span>ㅎㅎ</span>
 					</p>
 					<p>
 						<span>금오공대</span> <span data-v-cd48e290="">15</span>학번
