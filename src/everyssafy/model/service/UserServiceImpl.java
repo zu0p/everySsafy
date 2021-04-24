@@ -27,14 +27,19 @@ public class UserServiceImpl implements UserService {
 		return UserDaoImpl.getUserDao().chkId(userId);
 	}
 	@Override
-	public UserDto chNick(String userId, String userNickName) {
+	public void chNick(String userId, String userNickName) throws Exception{
 		// TODO Auto-generated method stub
-		return UserDaoImpl.getUserDao().chNick(userId, userNickName);
+		UserDaoImpl.getUserDao().chNick(userId, userNickName);
 	}
 	@Override
-	public void chPass(String userId, String userPwd, String usernewPwd) {
+	public void chPass(String userId, String userPwd, String usernewPwd) throws Exception {
 		// TODO Auto-generated method stub
 		UserDaoImpl.getUserDao().chPass(userId, userPwd, usernewPwd);
+	}
+	@Override
+	public void delUser(String userId, String userPwd) throws Exception {
+		// TODO Auto-generated method stub
+		UserDaoImpl.getUserDao().delUser(userId, userPwd);
 	}
 
 }
