@@ -11,4 +11,5 @@ public interface UserDao {
 	void chNick(String userId, String usernickName) throws SQLException;
 	void chPass(String userId, String userPwd, String usernewPwd) throws SQLException;
 	void delUser(String userId, String userPwd) throws SQLException;
+	UserDto getUserInfo(String userId)throws SQLException;
 }

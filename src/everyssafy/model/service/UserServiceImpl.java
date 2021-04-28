@@ -38,8 +38,12 @@ public class UserServiceImpl implements UserService {
 	}
 	@Override
 	public void delUser(String userId, String userPwd) throws Exception {
-		// TODO Auto-generated method stub
 		UserDaoImpl.getUserDao().delUser(userId, userPwd);
+  }
+
+  @Override
+	public UserDto getUserInfo(String userId) throws Exception {
+		return UserDaoImpl.getUserDao().getUserInfo(userId);
 	}
 
 }

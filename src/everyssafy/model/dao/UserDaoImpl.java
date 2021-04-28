@@ -146,5 +146,29 @@ public class UserDaoImpl implements UserDao {
 		}
 		return;
 	}
+	@Override
+	public UserDto getUserInfo(String userId) throws SQLException {
+		UserDto userDto=null;
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			conn=DBUtil.getConnect();
+			String sql="select * from user where userId=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				userDto = new UserDto();
+				userDto.setUserId(rs.getString("userId"));
+				userDto.setUserName(rs.getString("userName"));
+				userDto.setUserNickName(rs.getString("userNickName"));
+				userDto.setUserPwd(rs.getString("userPwd"));
+			}
+		}finally {
+			DBUtil.close(rs, pstmt, conn);
+		}
+		return userDto;
+	}
 
 }
