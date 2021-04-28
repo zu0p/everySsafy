@@ -135,10 +135,8 @@ public class UserDaoImpl implements UserDao {
 	}
 	@Override
 	public void chPass(String userId, String userPwd, String usernewPwd) {
-		UserDto userDto=null;
 		Connection conn=null;
 		PreparedStatement pstmt=null;
-		ResultSet rs=null;
 		try {
 			conn=DBUtil.getConnect();
 			String sql="update user set userPwd=? where userId=? and userPwd=?";
@@ -150,22 +148,33 @@ public class UserDaoImpl implements UserDao {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			if(pstmt!=null) {
-				try {
-					pstmt.close();
-				}catch(SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if(conn!=null) {
-				try {
-					conn.close();
-				}catch(SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			DBUtil.close(pstmt, conn);
 		}
 		return;
+	}
+	@Override
+	public UserDto getUserInfo(String userId) throws SQLException {
+		UserDto userDto=null;
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			conn=DBUtil.getConnect();
+			String sql="select * from user where userId=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				userDto = new UserDto();
+				userDto.setUserId(rs.getString("userId"));
+				userDto.setUserName(rs.getString("userName"));
+				userDto.setUserNickName(rs.getString("userNickName"));
+				userDto.setUserPwd(rs.getString("userPwd"));
+			}
+		}finally {
+			DBUtil.close(rs, pstmt, conn);
+		}
+		return userDto;
 	}
 
 }

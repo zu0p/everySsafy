@@ -36,5 +36,9 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		UserDaoImpl.getUserDao().chPass(userId, userPwd, usernewPwd);
 	}
+	@Override
+	public UserDto getUserInfo(String userId) throws Exception {
+		return UserDaoImpl.getUserDao().getUserInfo(userId);
+	}
 
 }
