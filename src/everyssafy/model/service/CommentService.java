@@ -9,14 +9,14 @@ public interface CommentService {
 	void registerComment(CommentDto commentDto);
 
 	//댓글 수정을 위한 얻어오기
-	CommentDto getComment(int commentDto);
+	CommentDto getComment(int commentId);
 	
 	//댓글 수정
 	void modifyComment(CommentDto commentDto);
 	
 	
 	//댓글 삭제
-	void deleteComment(int commentDto);
+	void deleteComment(int commentId);
 	
 	//댓글 조회
 	List<CommentDto> getCommentList(int articleId);
