@@ -8,6 +8,7 @@ import everyssafy.controller.ChkIdController;
 import everyssafy.controller.Controller;
 import everyssafy.controller.DeleteArticleController;
 import everyssafy.controller.DeleteCommentController;
+import everyssafy.controller.DeleteController;
 import everyssafy.controller.GetListArticleController;
 import everyssafy.controller.GetListCommentController;
 import everyssafy.controller.LoginController;
@@ -32,6 +33,7 @@ public class HandlerMapping {
 		map.put("/deleteArticle.do", new DeleteArticleController());
 		map.put("/changeNick.do", new ChNickController());
 		map.put("/changePass.do", new ChPassController());
+		map.put("/delete.do", new DeleteController());
 		map.put("/mypage.do", new MyPageController());
 		map.put("/regitercomment.do", new RegisterCommnetController());
 		map.put("/modifycomment.do", new ModifyCommentController());

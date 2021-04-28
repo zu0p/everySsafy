@@ -95,46 +95,23 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public UserDto chNick(String userId, String userNickName) {
-		UserDto userDto=null;
+	public void chNick(String userId, String userNickName) throws SQLException{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
-		ResultSet rs=null;
 		try {
 			conn=DBUtil.getConnect();
-			String sql="update user set userNickNae=? where userId=?";
+			String sql="update user set userNickName=? where userId=?";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, userNickName);
 			pstmt.setString(2, userId);
 			pstmt.executeUpdate();
-			if(rs.next()) {
-				userDto.setUserId(userId);
-				userDto.setUserPwd(rs.getString("userPwd"));
-				userDto.setUserName(rs.getString("userName"));
-				userDto.setUserNickName(userNickName);
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
 		}finally {
-			if(pstmt!=null) {
-				try {
-					pstmt.close();
-				}catch(SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if(conn!=null) {
-				try {
-					conn.close();
-				}catch(SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			DBUtil.close(pstmt,conn);
 		}
-		return userDto;
+		return;
 	}
 	@Override
-	public void chPass(String userId, String userPwd, String usernewPwd) {
+	public void chPass(String userId, String userPwd, String usernewPwd) throws SQLException{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		try {
@@ -142,13 +119,30 @@ public class UserDaoImpl implements UserDao {
 			String sql="update user set userPwd=? where userId=? and userPwd=?";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, usernewPwd);
+			System.out.println(usernewPwd);
 			pstmt.setString(2, userId);
+			System.out.println(userId);
 			pstmt.setString(3, userPwd);
+			System.out.println(userPwd);
 			pstmt.executeUpdate();
-		}catch(Exception e) {
-			e.printStackTrace();
 		}finally {
-			DBUtil.close(pstmt, conn);
+			DBUtil.close(pstmt,conn);
+		}
+		return;
+	}
+	@Override
+	public void delUser(String userId, String userPwd) throws SQLException {
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		try {
+			conn=DBUtil.getConnect();
+			String sql="delete from user where userId=? and userPwd=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPwd);
+			pstmt.executeUpdate();
+		}finally {
+			DBUtil.close(pstmt,conn);
 		}
 		return;
 	}

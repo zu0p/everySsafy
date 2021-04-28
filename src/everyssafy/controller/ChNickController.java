@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import everyssafy.model.UserDto;
-import everyssafy.model.service.UserService;
 import everyssafy.model.service.UserServiceImpl;
 
 public class ChNickController implements Controller {
@@ -16,20 +15,21 @@ public class ChNickController implements Controller {
 	@Override
 	public String requestHandle(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String userId=request.getParameter("userId");
+		HttpSession session = request.getSession();
+		String userId=((UserDto)session.getAttribute("user")).getUserId();
 		String userNickName=request.getParameter("changeNick");
 		String PATH=null;
-		UserService service=UserServiceImpl.getUserService();
-		UserDto userDto=service.chNick(userId, userNickName);
-		if(userDto!=null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("user", userDto);
-			PATH="/userinfo.jsp";
-		}else {
-			request.setAttribute("msg", "로그인 실패");
+		try {
+			UserServiceImpl.getUserService().chNick(userId, userNickName);
+			PATH="/index.jsp";
+		} catch (Exception e) {
 			PATH="/error/error500.jsp";
+			e.printStackTrace();
+			return PATH;
 		}
+		UserDto userDto=((UserDto) session.getAttribute("user"));
+		userDto.setUserNickName(userNickName);
+		session.setAttribute("user", userDto);
 		return PATH;
 	}
 
