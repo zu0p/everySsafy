@@ -4,6 +4,28 @@
 String root = request.getContextPath();
 pageContext.setAttribute("root", root);
 %>
+<script type="text/javascript">
+function clickMypage(){
+	//location.href="${root}/mypage.do"
+	$.ajax({
+		method: "GET",
+		url: "${root}/mypage.do",
+		success: function(res){
+			//console.log(res)
+			$('.community').empty()	
+			
+			let info = JSON.parse(res);
+			//console.log(info);
+			//console.log(info.user);
+			$('.community').load("http://localhost:8080/tetetmp/"+info.path, function(){
+				$('#info-id').text(info.user.userId);
+				$('#info-name').text(info.user.userName);
+			});
+		}
+	})
+}
+
+</script>
 			  <div class="card pconly">
 		        <form class="logged">
 		          <img src="https://cf-fpi.everytime.kr/0.png" class="picture">
@@ -11,7 +33,7 @@ pageContext.setAttribute("root", root);
 		          <p class="school">${ user.userName }</p>
 		          <p class="school">${ user.userNickName }</p>
 		          <ul class="buttons">
-		            <li><a href="${root}/my">내 정보</a></li>
+		            <li><a href="javascript:void(0);" onclick="javascript:clickMypage(); return false;" id="mypage">내 정보</a></li>
 		            <li><a href="${root}/logout.do">로그아웃</a></li>
 		          </ul>
 		          <hr>

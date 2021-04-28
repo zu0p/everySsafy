@@ -14,6 +14,19 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 	<script src="https://kit.fontawesome.com/fa7b781275.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(){
+			$ajax({
+				url:'${root}getArticl.do',
+				method:'post',
+				data:{"act",""},
+				dataType:'json',
+				success:function(data){
+					
+				}
+			});
+		}
+	</script>
 </head>
 <body>
 	<header class="title">
@@ -25,7 +38,7 @@
 				<div class="article_member">
 					<i class="fas fa-portrait fa-3x"></i>
 					<div class="profile">
-						<h3>익명</h3>
+						<h3>${user.userName}</h3>
 						<time>방금</time>
 					</div>
 				</div>
@@ -35,7 +48,7 @@
 				</div>
 			</div>
 			<div class="article_content">
-				<p>샌즈 멈춰!!!</p>
+				<p>${article.articleContent }</p>
 			</div>
 			<div class="article_cnt">
 			    <i class="far fa-star fa-1x">0</i>
@@ -43,27 +56,29 @@
 				<i class="far fa-thumbs-up fa-1x">0</i>
 			</div>
 		</div>
-		<div class="main">
-			<div class="comment_info">
-				<div class="comment_member">
-					<i class="fas fa-portrait fa-2x"></i>
-					<div class="profile">
-						<h3>익명1</h3>
+		<c:forEach items="${commentList}" var="comment">
+			<div class="main">
+				<div class="comment_info">
+					<div class="comment_member">
+						<i class="fas fa-portrait fa-2x"></i>
+						<div class="profile">
+							<h3>${comment.userId }</h3>
+						</div>
+					</div>
+					<div class="article_send">
+						<a href="#">대댓글</a>
+						<a href="#">공감</a>
+						<a href="#">쪽지</a>
+						<a href="#">신고</a>
 					</div>
 				</div>
-				<div class="article_send">
-					<a href="#">대댓글</a>
-					<a href="#">공감</a>
-					<a href="#">쪽지</a>
-					<a href="#">신고</a>
+				<div class="article_content">
+					<p>${comment.commentContent }</p>
 				</div>
+				<time>방금</time>
 			</div>
-			<div class="article_content">
-				<p>샌즈 멈춰!!!</p>
-			</div>
-			<time>방금</time>
-		</div>
-		<form class="commentForm" method="post">
+		</c:forEach>
+		<form class="commentForm" method="post" onsubmit="return false;">
 			<div class="wraper input-group mb-4">
 			  <input type="text" class="form-control bg-color" placeholder="댓글을 입력하세요">
 	          <div class="form-check">
@@ -72,7 +87,7 @@
 			    </label>
 			  </div>
 			  <div class="input-group-append">
-			    <button class="btn btn-danger" type="button"><i class="fas fa-pen 5x"></i></button>
+			    <button class="btn btn-danger" type="button" onclick=""><i class="fas fa-pen 5x"></i></button>
 			  </div>
 			</div>
 		</form>
