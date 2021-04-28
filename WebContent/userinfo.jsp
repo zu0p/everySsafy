@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Insert title here</title>
+<title>내 정보 - 에브리싸피</title>
 <link type="text/css" rel="stylesheet" href="./css/userinfo.css">
 <link type="text/css" rel="stylesheet" href="./css/userinfo_2.css">
 
@@ -36,12 +36,12 @@
 			<section>
 				<h2>계정</h2>
 				<a href="/auth" class="item">지역 인증</a>
-				<a href="../user/password.sjp" class="item">비밀번호 변경</a>
-				<a href="../user/email.jsp" class="item">이메일 변경</a>
+				<a href="./user/password.jsp" class="item">비밀번호 변경</a>
+				<a href="./user/email.jsp" class="item">이메일 변경</a>
 			</section>
 			<section>
 				<h2>커뮤니티</h2>
-				<a href="../user/nick.jsp" class="item">닉네임 설정</a>
+				<a href="./user/nick.jsp" class="item">닉네임 설정</a>
 				<a href="/my/banlist" class="item">이용 제한 내역</a>
 				<a href="/my/boardlist" class="item">게시판 관리</a>
 				<a href="/page/rules" class="item">커뮤니티 이용규칙</a>
@@ -56,7 +56,7 @@
 			<section>
 				<h2>기타</h2>
 				<a href="/my/adagreement" class="item">정보 동의 설정</a>
-				<a href="../user/deleteUser.jsp" class="item">회원탈퇴</a>
+				<a href="./user/deleteUser.jsp" class="item">회원탈퇴</a>
 			</section>
 		</div>
 		<%@ include file="/module/footer.jsp"%>

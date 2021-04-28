@@ -22,12 +22,12 @@ public class DeleteController implements Controller {
 		try {
 			UserServiceImpl.getUserService().delUser(userId, userPwd);
 			PATH="/user/login.jsp";
-			return PATH;
 		}catch(Exception e){
 			PATH="/error/error500.jsp";
 			e.printStackTrace();
 			return PATH;
 		}
+		return PATH;
 	}
 	
 }
