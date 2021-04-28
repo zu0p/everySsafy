@@ -91,6 +91,35 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public boolean chkId(String userId) {
 		// TODO Auto-generated method stub
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			conn=DBUtil.getConnect();
+			String sql="select * from user where userId=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs=pstmt.executeQuery();
+			if(!rs.next()) return true;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}finally {
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(conn!=null) {
+				try {
+					conn.close();
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		return false;
 	}
 
