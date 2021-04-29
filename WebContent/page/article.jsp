@@ -15,17 +15,43 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 	<script src="https://kit.fontawesome.com/fa7b781275.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
-		$(document).ready(){
+		function addComment(){
+			let content=$('#content').val();
+			let user=${user};
+			let article=${article};
 			$ajax({
-				url:'${root}getArticl.do',
-				method:'post',
-				data:{"act",""},
+				url:'${root}RegisterComment.do',
+				type:'post',
+				data:{"content":content,"user":user,"article":article},
 				dataType:'json',
 				success:function(data){
-					
+					$('#commentContent').val("");
 				}
 			});
 		}
+		/* function goArticleList(event){
+		    let boardId = event.id;
+		    console.log(boardId);
+		    $.ajax({
+		        method: "GET",
+		        data:{
+		            boardId : "${boardId}"
+		        },
+		        url: "${root}/getlistArticle.do",
+		        success: function(res){
+		            console.log(res)
+		            $('.changable').empty()    
+		            
+		            //let info = JSON.parse(res);
+		            //console.log(info);
+		            //console.log(info.user);
+		            //$('.community').load("http://localhost:8080/tetetmp/"+info.path, function(){
+		            //    $('#info-id').text(info.user.userId);
+		            //    $('#info-name').text(info.user.userName);
+		            //});
+		        }
+		    })
+		} */
 	</script>
 </head>
 <body>
@@ -78,16 +104,16 @@
 				<time>방금</time>
 			</div>
 		</c:forEach>
-		<form class="commentForm" method="post" onsubmit="return false;">
+		<form class="commentForm" id="commentForm" method="post" onsubmit="return false;">
 			<div class="wraper input-group mb-4">
-			  <input type="text" class="form-control bg-color" placeholder="댓글을 입력하세요">
+			  <input type="text" class="form-control bg-color" name="content" id="content" placeholder="댓글을 입력하세요">
 	          <div class="form-check">
 			    <label class="form-check-label">
 			      <input type="checkbox" class="form-check-input" value="">익명
 			    </label>
 			  </div>
 			  <div class="input-group-append">
-			    <button class="btn btn-danger" type="button" onclick=""><i class="fas fa-pen 5x"></i></button>
+			    <button class="btn btn-danger" type="button" onclick="javascript:addComment()"><i class="fas fa-pen 5x"></i></button>
 			  </div>
 			</div>
 		</form>

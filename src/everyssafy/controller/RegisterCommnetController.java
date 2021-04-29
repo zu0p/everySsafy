@@ -24,7 +24,7 @@ public class RegisterCommnetController implements Controller{
 		if(userdto !=null)
 		{
 			commentDto.setUserId(userdto.getUserId());
-			commentDto.setCommentContent(request.getParameter("Ccontent"));
+			commentDto.setCommentContent(request.getParameter("content"));
 			
 			try {
 				CommentServiceImpl.getCommentService().registerComment(commentDto);
