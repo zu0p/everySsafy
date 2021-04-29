@@ -13,8 +13,6 @@
 <link type="text/css" rel="stylesheet" href="../css/userinfo_2.css"/>
 <link rel="stylesheet" type="text/css" href="../css/common.css"/>
 <link rel="stylesheet" type="text/css" href="../css/common.partial.css"/>
-<link rel="stylesheet" type="text/css" href="../css/container.community.css"/>
-<link rel="stylesheet" type="text/css" href="../css/container.article.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 <script type="text/javascript">
@@ -36,7 +34,6 @@
 </script>
 </head>
 <body>
-<jsp:include page="/module/nav.jsp"></jsp:include>
 	<form class="container" id="deleteUserForm" method="post" action="${root}/deleteUser.do">
 		<section>
 			<h1>회원 탈퇴</h1>
@@ -60,7 +57,7 @@
 					※ 자세한 내용은 개인정보처리방침을 확인해주세요.
 				</p>
 			</div>
-			<input type="button" value="회원 탈퇴" onclick="javascript:delUser()">
+			<input type="submit" value="회원 탈퇴">
 		</section>
 	</form>
 </body>

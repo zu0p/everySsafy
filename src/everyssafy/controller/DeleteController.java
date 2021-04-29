@@ -19,6 +19,8 @@ public class DeleteController implements Controller {
 		String userId=((UserDto)session.getAttribute("user")).getUserId();
 		String userPwd=request.getParameter("userPwd");
 		String PATH=null;
+		System.out.println(userId);
+		System.out.println(userPwd);
 		try {
 			UserServiceImpl.getUserService().delUser(userId, userPwd);
 			PATH="/user/login.jsp";

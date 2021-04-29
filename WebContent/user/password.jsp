@@ -13,8 +13,6 @@
 <link rel="stylesheet" type="text/css" href="../css/nickName.css" />
 <link type="text/css" rel="stylesheet" href="../css/userinfo.css" />
 <link type="text/css" rel="stylesheet" href="../css/userinfo_2.css" />
-<link rel="stylesheet" type="text/css" href="../css/common.css" />
-<link rel="stylesheet" type="text/css" href="../css/common.partial.css" />
 <link rel="stylesheet" type="text/css"
 	href="../css/container.community.css" />
 <link rel="stylesheet" type="text/css"
@@ -41,12 +39,24 @@
 			alert('현재 비밀번호가 올바르지 않습니다.');
 			$('#password').focus();
 		}
-		$('#changeNickForm').submit();
+		$("#changePassForm").attr('onsubmit',"return false");
+		$.ajax({
+			url : '${root}/changePass.do',
+			type : 'post',
+			dataType : 'json',
+			data : {
+				"userPwd" : $('#newpassword').val(),
+				"newuserPwd" : $('#password').val(),
+			},
+			success : function(data) {
+				console.log("비밀번호를 변경했습니다.");
+			}
+		});
 	}
 </script>
 </head>
 <body>
-	<jsp:include page="/module/nav.jsp"></jsp:include>
+
 	<form class="container" id="changePassForm" method="post"
 		action="${root}/changePass.do">
 		<section>

@@ -33,7 +33,7 @@ public class HandlerMapping {
 		map.put("/deleteArticle.do", new DeleteArticleController());
 		map.put("/changeNick.do", new ChNickController());
 		map.put("/changePass.do", new ChPassController());
-		map.put("/delete.do", new DeleteController());
+		map.put("/deleteUser.do", new DeleteController());
 		map.put("/mypage.do", new MyPageController());
 		map.put("/regitercomment.do", new RegisterCommnetController());
 		map.put("/modifycomment.do", new ModifyCommentController());

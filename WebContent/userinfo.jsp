@@ -55,7 +55,7 @@
 			</section>
 			<section>
 				<h2>기타</h2>
-				<a href="/my/adagreement" class="item">정보 동의 설정</a>
+				<a href="" class="item">정보 동의 설정</a>
 				<a href="./user/deleteUser.jsp" class="item">회원탈퇴</a>
 			</section>
 		</div>
