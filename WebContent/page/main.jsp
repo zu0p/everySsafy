@@ -13,6 +13,8 @@ function goArticleList(event){
 		method: "GET",
 		data: Data,
 		url: "${root}/getlistArticle.do",
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		datatype: 'JSON',
 		success: function(res){
 			console.log(res)
 			$('#changeable').empty()	
