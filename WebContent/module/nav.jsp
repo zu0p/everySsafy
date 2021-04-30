@@ -3,7 +3,7 @@
 <nav>
     <div class="wrap">
       <div id="logo">
-        <a href="/"><img src=""></a>
+        <a href="/"><img src="../img/logo.jpg"></a>
         <p><span class="name multiple">에브리SSAFY</span><span class="subname">HelloSSAFY</span></p>
       </div>
       

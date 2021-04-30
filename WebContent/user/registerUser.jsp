@@ -54,9 +54,11 @@
 				return;
 			}
 			if(!chkIdFlag) return;
+			$("#registerForm").attr('onsubmit',"return true");
 			$("#registerForm").attr("action", "${root}/register.do").submit();
 		}
-		function checkUserId(){
+		function checkId(){
+			$("#registerForm").attr('onsubmit',"return false");
 			$.ajax({
 				url:'${root}/chkId.do',
 				method:'post',
@@ -65,8 +67,7 @@
 				},
 				dataType:'json',
 				success:function(data){
-					alert('1');
-					if(data==0){
+					if(data=='0'){
 						alert('이미 존재하는 아이디 입니다.');
 						$('#userId').focus();
 					}else{
