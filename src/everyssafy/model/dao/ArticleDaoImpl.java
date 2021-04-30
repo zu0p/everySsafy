@@ -133,7 +133,7 @@ public class ArticleDaoImpl implements ArticleDao{
 
 		try {
 			conn = DBUtil.getConnect();
-			String sql = "select * from article";
+			String sql = "select * from article \n";
 			sql +="where BoardId = ?";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, BoardId);
@@ -145,7 +145,7 @@ public class ArticleDaoImpl implements ArticleDao{
 				articleDto.setArticleId(rs.getInt("ArticleId"));
 				articleDto.setArticleDate(rs.getDate("ArticleDate"));
 				articleDto.setArticleContent(rs.getString("articleContent"));
-				articleDto.setArticleLike(rs.getInt("ArticelLike"));
+				articleDto.setArticleLike(rs.getInt("ArticleLike"));
 				articleDto.setArticleTitle(rs.getString("ArticleTitle"));
 				articleDto.setBoardId(rs.getInt("BoardId"));
 				articleDto.setUserId(rs.getString("userId"));

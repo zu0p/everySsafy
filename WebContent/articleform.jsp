@@ -42,9 +42,7 @@ function writebtn() {
 </head>
 <body style="">
     <!--  request로 저장 -->
-    <jsp:include page="./module/nav.jsp"></jsp:include>
 	
-	<div id="container" class="article"  style="margin-top: 100px;" >
 		<input type="hidden" id="isUser" value="1"> <input
 			type="hidden" id="boardId" value="389148">
 		<aside class="none">
@@ -89,10 +87,13 @@ function writebtn() {
 			</form>
 			<a id="writeArticleButton" onclick="javascript:writebtn();" >새 글을 작성해주세요!</a>
 			
-			<article>
-				<a class="article" href="/389148/v/181438459"><div
-						class="attachthumbnail"
-						style="background-image: url('./더미이미지.jfif');"></div>
+			<div class="article-list">
+				
+				<!-- <article>
+					<a class="article" href="/389148/v/181438459">
+					<div class="attachthumbnail"
+							style="background-image: url('./더미이미지.jfif');">
+					</div>
 					<h2 class="medium">글의 제목이 들어가는 부분</h2>
 					<p class="small">글의 내용이 들어가는 부분</p> <time class="small">temp</time>
 					<h3 class="small">익명</h3>
@@ -101,27 +102,12 @@ function writebtn() {
 						<li title="공감" class="vote">공감 value</li>
 						<li title="댓글" class="comment">댓글 cnt value</li>
 					</ul>
-					<hr> <input type="hidden" name="181438459_comment_anonym"
-					value="0"></a>
-				<div class="comments"></div>
-			</article>
-
-			<article>
-				<a class="article" href="/389148/v/181438459"><div
-						class="attachthumbnail" style="background-image: inherit;"></div>
-					<!--  이미지 없을땐 어떻게 처리하지?. -->
-					<h2 class="medium">글의 제목이 들어가는 부분</h2>
-					<p class="small">글의 내용이 들어가는 부분</p> <time class="small">temp</time>
-					<h3 class="small">익명</h3>
-					<ul class="status">
-						<li class="attach">1</li>
-						<li title="공감" class="vote">공감 value</li>
-						<li title="댓글" class="comment">댓글 cnt value</li>
-					</ul>
-					<hr> <input type="hidden" name="181438459_comment_anonym"
-					value="0"></a>
-				<div class="comments"></div>
-			</article>
+					<hr> 
+					<input type="hidden" name="181438459_comment_anonym" value="0"></a>
+					<div class="comments"></div>
+				</article> -->
+			</div>
+			
 			<div class="clearBothOnly"></div>
 			<div class="pagination">
 				<form id="searchArticleForm" class="search">
@@ -133,12 +119,8 @@ function writebtn() {
 				</form>
 				<a href="/389148/p/2" class="next">다음</a>
 			</div>
-		</div>
+		</div> 
 		<hr>
-		<div class="rightside">
-			<jsp:include page="./module/rightside.jsp"></jsp:include>
-		</div>
-	</div>
 
 </body>
 
