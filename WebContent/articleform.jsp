@@ -87,10 +87,13 @@ function writebtn() {
 			</form>
 			<a id="writeArticleButton" onclick="javascript:writebtn();" >새 글을 작성해주세요!</a>
 			
-			<article>
-				<a class="article" href="/389148/v/181438459"><div
-						class="attachthumbnail"
-						style="background-image: url('./더미이미지.jfif');"></div>
+			<div class="article-list">
+				
+				<!-- <article>
+					<a class="article" href="/389148/v/181438459">
+					<div class="attachthumbnail"
+							style="background-image: url('./더미이미지.jfif');">
+					</div>
 					<h2 class="medium">글의 제목이 들어가는 부분</h2>
 					<p class="small">글의 내용이 들어가는 부분</p> <time class="small">temp</time>
 					<h3 class="small">익명</h3>
@@ -99,11 +102,11 @@ function writebtn() {
 						<li title="공감" class="vote">공감 value</li>
 						<li title="댓글" class="comment">댓글 cnt value</li>
 					</ul>
-					<hr> <input type="hidden" name="181438459_comment_anonym"
-					value="0"></a>
-				<div class="comments"></div>
-			</article>
-
+					<hr> 
+					<input type="hidden" name="181438459_comment_anonym" value="0"></a>
+					<div class="comments"></div>
+				</article> -->
+			</div>
 			
 			<div class="clearBothOnly"></div>
 			<div class="pagination">

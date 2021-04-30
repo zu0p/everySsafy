@@ -23,6 +23,27 @@ function goArticleList(event){
 			$('#changeable').load("http://localhost:8080/tetetmp"+info.path, function(){
 				//$('#info-id').text(info.user.userId);
 				//$('#info-name').text(info.user.userName);
+				
+				$.each(info.list, function(index, item){
+					let newArticle = `
+						<article>
+							<a class="article" href="/389148/v/181438459">
+							<div class="attachthumbnail"
+									style="background-image: url('./더미이미지.jfif');">
+							</div>
+							<h2 class="medium">제목 : ${'${item.articleTitle}'} </h2>
+							<p class="small">내용: ${'${item.articleContent}'} </p> <time class="small">temp</time>
+							<h3 class="small">익명</h3>
+							<ul class="status">
+								<li class="attach">1</li>
+								<li title="공감" class="vote">${'${item.articleLike}'} </li>
+								<li title="댓글" class="comment"> 댓글cnt </li>
+							</ul>
+							<hr> 
+							<div class="comments"></div>
+						</article>`;
+					$('.article-list').append(newArticle);
+				})
 			});
 		}
 	})
