@@ -4,6 +4,10 @@ public class BoardDto {
 	private int boardId;
 	private String boardTitle;
 	
+	public BoardDto(String boardTitle){
+		this.boardTitle=boardTitle;
+	}
+	
 	public int getBoardId() {
 		return boardId;
 	}

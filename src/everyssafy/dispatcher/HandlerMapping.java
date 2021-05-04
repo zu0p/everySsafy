@@ -9,6 +9,7 @@ import everyssafy.controller.Controller;
 import everyssafy.controller.DeleteArticleController;
 import everyssafy.controller.DeleteCommentController;
 import everyssafy.controller.DeleteController;
+import everyssafy.controller.GetBoardListController;
 import everyssafy.controller.GetListArticleController;
 import everyssafy.controller.GetListCommentController;
 import everyssafy.controller.LoginController;
@@ -39,6 +40,8 @@ public class HandlerMapping {
 		map.put("/modifycomment.do", new ModifyCommentController());
 		map.put("/deletecomment.do", new DeleteCommentController());
 		map.put("/getlistcommnet.do", new GetListCommentController());
+		map.put("/getBoardList.do", new GetBoardListController());
+
 	}
 	public static Controller getMapping(String path) {		
 		return map.get(path);
