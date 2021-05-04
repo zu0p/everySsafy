@@ -9,21 +9,41 @@ function goArticleList(event){
 	let boardId = event.id;
 	let Data = {"boardId" : boardId};
 	console.log(boardId);
+	let title = "";
+	$.ajax({
+		method: "GET",
+		data: Data,
+		url: "${root}/getBoardTitle.do",
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		datatype: boardId,
+		success: function(res){
+			console.log(res);
+			title = res;
+		}
+	})
 	$.ajax({
 		method: "GET",
 		data: Data,
 		url: "${root}/getlistArticle.do",
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		datatype: 'JSON',
 		success: function(res){
-			console.log(res)
+			//console.log(res)
 			$('#changeable').empty()	
 			
 			let info = JSON.parse(res);
 			//console.log(info);
 			//console.log(info.user);
+			//let curClass = $('#changeable').attr('class');
+			//console.log("before: "+curClass);
+			$('#changeable').addClass("articles");
+			//console.log("after: "+$('#changeable').attr('class'));
 			$('#changeable').load("http://localhost:8080/tetetmp"+info.path, function(){
 				//$('#info-id').text(info.user.userId);
 				//$('#info-name').text(info.user.userName);
-				
+				$('#articleName').text(title);
+				$('#articleName').val(boardId);
+				//console.log($('#articleName').val())
 				$.each(info.list, function(index, item){
 					let newArticle = `
 						<article>

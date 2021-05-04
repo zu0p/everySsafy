@@ -1,17 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<title>에브리싸피</title>
-<meta charset="utf-8">
-<link type="text/css" href="./css/common.css" rel="stylesheet">
-<link type="text/css" href="./css/common.partial.css" rel="stylesheet">
-<link type="text/css" href="./css/container.article.css"
-	rel="stylesheet">
-<link type="text/css" href="./css/container.community.css"
-	rel="stylesheet">
+
 <link href="/favicon.ico" rel="shortcut icon">
 <!--[if lt IE 9]>
   <script src="/js/extensions.html5shiv.js"></script>
@@ -22,12 +12,7 @@
   <script src="/js/extensions.json3.min.js"></script>
   <![endif]-->
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-<script src="https://kit.fontawesome.com/fa7b781275.js" crossorigin="anonymous"></script>
-	
 <script type="text/javascript">
 function writebtn() {
 		var writeform = document.getElementsByClassName("write")[0]
@@ -36,29 +21,15 @@ function writebtn() {
 		writebutton.style.display ="none"
 		return;
 }
-
-//localStorage.getItem("item");  로컬 스토리지에서  값얻오기
 </script>
-</head>
-<body style="">
-    <!--  request로 저장 -->
-	
-		<input type="hidden" id="isUser" value="1"> <input
-			type="hidden" id="boardId" value="389148">
-		<aside class="none">
-			<div class="title">
-				<a class="hamburger"></a>
-				<h1>
-					<a href="/389148">{asd.title}</a>
-				</h1>
-			</div>
-		</aside>
+
 		<div class="wrap title">
 			<h1>
-				<a href="/389148">자유게시판</a>
+				<a id="articleName" href="/389148"></a>
 			</h1>
 			<hr>
 		</div>
+		
 		<div class="wrap articles">
 			<form class="write" style="display: none;">
 				<p>
@@ -108,20 +79,7 @@ function writebtn() {
 				</article> -->
 			</div>
 			
-			<div class="clearBothOnly"></div>
-			<div class="pagination">
-				<form id="searchArticleForm" class="search">
-					<select name="search_type"><option value="4">전체</option>
-						<option value="3">해시태그</option>
-						<option value="2">글 제목</option>
-						<option value="1">글 내용</option></select><input name="keyword"
-						placeholder="검색어를 입력하세요." class="text">
-				</form>
-				<a href="/389148/p/2" class="next">다음</a>
-			</div>
+			
 		</div> 
 		<hr>
-
-</body>
-
-</html>
+	</div>

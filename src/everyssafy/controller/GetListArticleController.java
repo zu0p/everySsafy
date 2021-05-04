@@ -42,6 +42,7 @@ public class GetListArticleController implements Controller{
 			
 			Gson gson = new Gson();
 			String result = gson.toJson(returns);
+			response.setCharacterEncoding("UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println(result);
 			out.flush();
