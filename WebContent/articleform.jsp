@@ -25,7 +25,7 @@ function writebtn() {
 
 		<div class="wrap title">
 			<h1>
-				<a href="/389148">자유게시판</a>
+				<a id="articleName" href="/389148"></a>
 			</h1>
 			<hr>
 		</div>
