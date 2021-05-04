@@ -42,6 +42,8 @@ function goArticleList(event){
 				//$('#info-id').text(info.user.userId);
 				//$('#info-name').text(info.user.userName);
 				$('#articleName').text(title);
+				$('#articleName').val(boardId);
+				//console.log($('#articleName').val())
 				$.each(info.list, function(index, item){
 					let newArticle = `
 						<article>
