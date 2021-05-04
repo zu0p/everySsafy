@@ -12,7 +12,13 @@ public class ArticleDto {
 	private int boardId;
 	private String userId;
 	
-	
+	public ArticleDto() {
+		// TODO Auto-generated constructor stub
+	}
+	public ArticleDto(String articleTitle) {
+		this.articleTitle=articleTitle;
+	}
+
 	public String getArticleContent() {
 		return articleContent;
 	}
