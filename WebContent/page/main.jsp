@@ -22,6 +22,10 @@ function goArticleList(event){
 			let info = JSON.parse(res);
 			//console.log(info);
 			//console.log(info.user);
+			let curClass = $('#changeable').attr('class');
+			console.log("before: "+curClass);
+			$('#changeable').addClass("articles");
+			console.log("after: "+$('#changeable').attr('class'));
 			$('#changeable').load("http://localhost:8080/tetetmp"+info.path, function(){
 				//$('#info-id').text(info.user.userId);
 				//$('#info-name').text(info.user.userName);
