@@ -15,48 +15,90 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 	<script src="https://kit.fontawesome.com/fa7b781275.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
-		function addComment(){
-			let content=$('#content').val();
-			let user=${user};
-			let article=${article};
+		function addComment(){ //댓글 추가하는거 테스트 해봐야함
 			$ajax({
-				url:'${root}RegisterComment.do',
-				type:'post',
-				data:{"content":content,"user":user,"article":article},
+				url:'${root}/RegisterComment.do',
+				method:'get',
+				data:{"content":$('#content').val(),"user":"${user}","article":"${article}"},
 				dataType:'json',
 				success:function(data){
 					$('#commentContent').val("");
+					$('#list').append(`
+							<li>
+								<div class="main">
+									<div class="comment_info">
+										<div class="comment_member">
+											<i class="fas fa-portrait fa-2x"></i>
+											<div class="profile">
+												<h3>${'${comment.userId }'}</h3>
+											</div>
+										</div>
+										<div class="article_send">
+											<a href="#">대댓글</a>
+											<a href="#">공감</a>
+											<a href="#">쪽지</a>
+											<a href="#">신고</a>
+										</div>
+									</div>
+									<div class="article_content">
+										<p>${'${comment.commentContent }'}</p>
+									</div>
+									<time>방금</time>
+								</div>
+							</li>
+					`);
 				}
 			});
 		}
-		/* function goArticleList(event){
-		    let boardId = event.id;
-		    console.log(boardId);
-		    $.ajax({
-		        method: "GET",
-		        data:{
-		            boardId : "${boardId}"
-		        },
-		        url: "${root}/getlistArticle.do",
-		        success: function(res){
-		            console.log(res)
-		            $('.changable').empty()    
-		            
-		            //let info = JSON.parse(res);
-		            //console.log(info);
-		            //console.log(info.user);
-		            //$('.community').load("http://localhost:8080/tetetmp/"+info.path, function(){
-		            //    $('#info-id').text(info.user.userId);
-		            //    $('#info-name').text(info.user.userName);
-		            //});
-		        }
-		    })
-		} */
+		function loadCommentPage(){ //댓글 띄우는거
+			let articleId=$(this).id();
+			let articleTitle=$(this).next().next().val()
+			let articleContent=$(this).next().next().next().val()
+			let articleUserName=$(this).next().next().next().next().val()
+			$('#articleUserName').val(articleUserName);
+			$('#articleContent').val(articleContent);
+			$('#boardTitle').val(articleTitle);
+			$('#articleTitle')
+			$ajax({
+				url:'${root}/getlistcommnet.do',
+				type:'post',
+				data:{"articleId":articleId},
+				dataType:'json',
+				success:function(data){
+					$(data).foreach(function(comment,index){
+						$('#list').append(`
+								<li>
+									<div class="main">
+										<div class="comment_info">
+											<div class="comment_member">
+												<i class="fas fa-portrait fa-2x"></i>
+												<div class="profile">
+													<h3>comment.userId</h3>
+												</div>
+											</div>
+											<div class="article_send">
+												<a href="#">대댓글</a>
+												<a href="#">공감</a>
+												<a href="#">쪽지</a>
+												<a href="#">신고</a>
+											</div>
+										</div>
+										<div class="article_content">
+											<p>comment.commentContent</p>
+										</div>
+										<time>방금</time>
+									</div>
+								</li>
+						`);
+					});				
+				}
+			});
+		}
 	</script>
 </head>
 <body>
 	<header class="title">
-		<h1>김해사는포르쉐오너</h1>
+		<h1 id="boardTitle"></h1>
 	</header>
 	<article>
 		<div class="main">
@@ -64,7 +106,7 @@
 				<div class="article_member">
 					<i class="fas fa-portrait fa-3x"></i>
 					<div class="profile">
-						<h3>${user.userName}</h3>
+						<h3 id="articleUserName"></h3>
 						<time>방금</time>
 					</div>
 				</div>
@@ -74,7 +116,7 @@
 				</div>
 			</div>
 			<div class="article_content">
-				<p>${article.articleContent }</p>
+				<p id="articleContent"></p>
 			</div>
 			<div class="article_cnt">
 			    <i class="far fa-star fa-1x">0</i>
@@ -82,28 +124,33 @@
 				<i class="far fa-thumbs-up fa-1x">0</i>
 			</div>
 		</div>
-		<c:forEach items="${commentList}" var="comment">
-			<div class="main">
-				<div class="comment_info">
-					<div class="comment_member">
-						<i class="fas fa-portrait fa-2x"></i>
-						<div class="profile">
-							<h3>${comment.userId }</h3>
+		<ul id="list">
+			<c:forEach items="${commentList}" var="comment">
+				<li>
+					<div class="main">
+						<div class="comment_info">
+							<div class="comment_member">
+								<i class="fas fa-portrait fa-2x"></i>
+								<div class="profile">
+									<h3>${comment.userId }</h3>
+								</div>
+							</div>
+							<div class="article_send">
+								<a href="#">대댓글</a>
+								<a href="#">공감</a>
+								<a href="#">쪽지</a>
+								<a href="#">신고</a>
+							</div>
 						</div>
+						<div class="article_content">
+							<p>${comment.commentContent }</p>
+						</div>
+						<time>방금</time>
 					</div>
-					<div class="article_send">
-						<a href="#">대댓글</a>
-						<a href="#">공감</a>
-						<a href="#">쪽지</a>
-						<a href="#">신고</a>
-					</div>
-				</div>
-				<div class="article_content">
-					<p>${comment.commentContent }</p>
-				</div>
-				<time>방금</time>
-			</div>
-		</c:forEach>
+				</li>
+			</c:forEach>
+		</ul>
+
 		<form class="commentForm" id="commentForm" method="post" onsubmit="return false;">
 			<div class="wraper input-group mb-4">
 			  <input type="text" class="form-control bg-color" name="content" id="content" placeholder="댓글을 입력하세요">
