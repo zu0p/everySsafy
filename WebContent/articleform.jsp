@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="everyssafy.model.UserDto" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%
+	
+	UserDto user = (UserDto) session.getAttribute("user");
+%>
 <link href="/favicon.ico" rel="shortcut icon">
 <!--[if lt IE 9]>
   <script src="/js/extensions.html5shiv.js"></script>
@@ -20,6 +24,26 @@ function writebtn() {
 		var writebutton =  document.getElementById("writeArticleButton")
 		writebutton.style.display ="none"
 		return;
+}
+
+function registArticle()
+{
+   let articletitle = $("#title").val();
+   let content = $("#text").val();
+   let boarId = $("#articleName").val();
+   let userId = $('${user.userId}');
+   
+   let Data =JSON.stringify({"articleTitle":articletitle,"articleContent":content,"boardId":boarId,"userId":userId});
+   $.ajax({
+      metod:"GET",
+      tranditional:true,
+      data : Data,
+      contentType: "application/json;charset=utf-8",
+      url:"http://localhost:8080/tetetmp/registerArticle.do",
+      success : function(res){
+       		console.log(res)
+      }
+   })
 }
 </script>
 
@@ -51,7 +75,7 @@ function writebtn() {
 				<ul class="option">
 					<!--  <li title="해시태그" class="hashtag"></li>   -->
 					<!--  <li title="첨부" class="attach" ></li>  -->
-					<li title="완료" class="submit" ></li>
+					<li title="완료" class="submit" onclick="javascript:registArticle()"></li>
 					<li title="익명" class="anonym"></li>
 				</ul>
 				<div class="clearBothOnly"></div>
