@@ -133,8 +133,11 @@ public class ArticleDaoImpl implements ArticleDao{
 
 		try {
 			conn = DBUtil.getConnect();
-			String sql = "select * from article";
-			sql +="where BoardId = ?";
+			String sql = "select a.articleId ,articleTitle ,articleContent ,articleDate ,articleLike,boardId,a.userId, count(commentId) as Comcnt ";
+					sql+="from article a left outer join comment c ";
+					sql+="on a.articleId= c.articleId ";
+					sql+="where boardId=? ";
+					sql+="group by articleId";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, BoardId);
 			
@@ -145,10 +148,11 @@ public class ArticleDaoImpl implements ArticleDao{
 				articleDto.setArticleId(rs.getInt("ArticleId"));
 				articleDto.setArticleDate(rs.getDate("ArticleDate"));
 				articleDto.setArticleContent(rs.getString("articleContent"));
-				articleDto.setArticleLike(rs.getInt("ArticelLike"));
+				articleDto.setArticleLike(rs.getInt("ArticleLike"));
 				articleDto.setArticleTitle(rs.getString("ArticleTitle"));
 				articleDto.setBoardId(rs.getInt("BoardId"));
 				articleDto.setUserId(rs.getString("userId"));
+				articleDto.setComcnt(rs.getInt("Comcnt"));
 				articleList.add(articleDto);
 				
 			}

@@ -169,6 +169,8 @@ public class UserDaoImpl implements UserDao {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			pstmt.setString(2, userPwd);
+			System.out.println(userId);
+			System.out.println(userPwd);
 			pstmt.executeUpdate();
 		}finally {
 			DBUtil.close(pstmt,conn);

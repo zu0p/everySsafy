@@ -57,7 +57,7 @@
 			let articleUserName=$(this).next().next().next().next().val()
 			$('#articleUserName').val(articleUserName);
 			$('#articleContent').val(articleContent);
-			$('#boardTitle').val(articleTitle);
+			$('#boardTitle').val(boardTitle);
 			$('#articleTitle')
 			$ajax({
 				url:'${root}/getlistcommnet.do',

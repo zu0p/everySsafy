@@ -9,13 +9,14 @@ import everyssafy.controller.Controller;
 import everyssafy.controller.DeleteArticleController;
 import everyssafy.controller.DeleteCommentController;
 import everyssafy.controller.DeleteController;
+import everyssafy.controller.GetBoardTitleController;
 import everyssafy.controller.GetListArticleController;
 import everyssafy.controller.GetListCommentController;
 import everyssafy.controller.LoginController;
 import everyssafy.controller.LogoutController;
 import everyssafy.controller.ModifyArticleController;
-import everyssafy.controller.MyPageController;
 import everyssafy.controller.ModifyCommentController;
+import everyssafy.controller.MyPageController;
 import everyssafy.controller.RegistController;
 import everyssafy.controller.RegisterArticleController;
 import everyssafy.controller.RegisterCommnetController;
@@ -33,12 +34,13 @@ public class HandlerMapping {
 		map.put("/deleteArticle.do", new DeleteArticleController());
 		map.put("/changeNick.do", new ChNickController());
 		map.put("/changePass.do", new ChPassController());
-		map.put("/delete.do", new DeleteController());
+		map.put("/deleteUser.do", new DeleteController());
 		map.put("/mypage.do", new MyPageController());
 		map.put("/regitercomment.do", new RegisterCommnetController());
 		map.put("/modifycomment.do", new ModifyCommentController());
 		map.put("/deletecomment.do", new DeleteCommentController());
 		map.put("/getlistcommnet.do", new GetListCommentController());
+		map.put("/getBoardTitle.do", new GetBoardTitleController());
 	}
 	public static Controller getMapping(String path) {		
 		return map.get(path);

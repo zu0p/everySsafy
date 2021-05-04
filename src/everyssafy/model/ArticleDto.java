@@ -11,8 +11,15 @@ public class ArticleDto {
 	private Date articleDate;
 	private int boardId;
 	private String userId;
+	private int Comcnt;
 	
 	
+	public int getComcnt() {
+		return Comcnt;
+	}
+	public void setComcnt(int comcnt) {
+		Comcnt = comcnt;
+	}
 	public String getArticleContent() {
 		return articleContent;
 	}
