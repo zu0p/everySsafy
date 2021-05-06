@@ -57,15 +57,16 @@ public class BoardDaoImpl implements BoardDao{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String sql="select articleTitle from articel a join board b on a.?=b.boardid limit 4";
+		String sql="select articleTitle from article a join board b on a.boardId=b.boardId where a.boardId=? limit 4";
 		
 		try {
 			conn=DBUtil.getConnect();
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, BoardId);
-			pstmt.executeQuery();
+			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				String articleTitle=rs.getString("articleTitle");
+				System.out.println(articleTitle);
 				list.add(new ArticleDto(articleTitle));
 			}
 		} catch (SQLException e) {

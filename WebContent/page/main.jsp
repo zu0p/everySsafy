@@ -7,101 +7,62 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		
-		// Handler for .ready() called.
-		$.ajax({
-			var ele = document.getElementsByClassName('card');
-			var eleCount = ele.childElementCount;
-			console.log("eleCount");
-			method: "GET",
-			url: "${root}/getBoardList.do",
-			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-			datatype: 'JSON',
-			success: function(res){
-				let info = JSON.parse(res);					
-					$.each(info.list, function(index, item){
-						let getBoard = `
-							<a class="list" href="/389148/v/181814276">
-								<time>방금</time><p>${'${item.articleTitle}'}</p><hr>
-							</a>`;
-						$('#get-Board').append(getBoard);
-					})
-				}
+		var ele = document.getElementsByClassName('board');
+		console.log(ele);
+		$.each(ele, function(index, myele){
+			console.log(myele.length);
+			var curId = $(myele).attr("data-id");
+			console.log(curId);
+				  $.ajax({
+						method: "GET",
+						data: {"boardId" : curId},
+						url: "${root}/getBoardList.do",
+						contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+						datatype: 'JSON',
+						async:false,
+						success: function(res){
+							//console.log(res);
+							let info = JSON.parse(res);					
+								$.each(info.list, function(index, item){
+									console.log(item);
+									let getBoard = `
+										<a class="list" href="/389148/v/181814276">
+											<time>방금</time><p>${'${item.articleTitle}'}</p><hr>
+										</a>`;
+									$(`#${'${curId}'}-board`).append(getBoard);
+								})
+							}
+						})
+			  // 컬렉션 내의 모든 노드를 보여줍니다.
 			})
+		// Handler for .ready() called.
+		
 	});
 </script>
 <div class="card">
-	<div class="card">
-		<div class="board">
-			<h3>
-				<a id="101" href="javasrcipt:void(0)" onclick="goArticleList(this); return false;">자유게시판</a>
-			</h3>
-			<div id="get-Board" class="getBoard">
-			
+		<div class="board" id="101-board" data-id="101">
+			<h3><a id="101" href="javasrcipt:void(0)" onclick="goArticleList(this); return false;">자유게시판</a></h3>
+
+		</div>
+	</div>
+<div class="card">
+	<div class="board" id="102-board" data-id="102">
+		<h3><a id="102" href="javasrcipt:void(0)" onclick="goArticleList(this); return false;">비밀게시판</a></h3>
+			<div class="needauth">
+				<p>로그인을 한 학생들만<br>이용할 수 있어요!</p>
+				<a href="/login" class="button">로그인</a>
 			</div>
 		</div>
 	</div>
-</div>
 <div class="card">
-	<div class="board">
-		<h3>
-			<a href="/259134">비밀게시판</a>
-		</h3>
-		<div class="needauth">
-			<p>
-				로그인을 한 학생들만<br>이용할 수 있어요!
-			</p>
-			<a class="button" href="/login">로그인</a>
-		</div>
+	<div class="board" id="103-board" data-id="103">
+		<h3><a id="103" href="javasrcipt:void(0)" onclick="goArticleList(this); return false;">졸업생게시판</a></h3>
+		
 	</div>
 </div>
 <div class="card">
-	<div class="board">
-		<h3>
-			<a href="/389425">졸업생게시판</a>
-		</h3>
-		<a class="article" href="/389425/v/181799554">
-			<p>
-				저는 4학년 전자통신쪽 인데요<br>졸업진로를 반도체나 태양광 혹은 통신 생각하고 있습니다.<br>전기기사나
-				공사기사는 공기업빼고는 사기업에선<br>필요가 없더
-			</p> <time>방금</time>
-			<ul class="status">
-				<li class="vote active">1</li>
-				<li class="comment active">1</li>
-			</ul>
-			<hr>
-		</a> <a class="article" href="/389425/v/181607909">
-			<p>
-				공대 대학원으로 가볼만한 마지노선이 <br>어디까지라 생각하시나요??<br>서카포연고까지 인가요?<br>한양중앙라인은
-				메리트가 없을려나요..
-			</p> <time>04/08 03:13</time>
-			<ul class="status">
-				<li class="vote active">0</li>
-				<li class="comment active">10</li>
-			</ul>
-			<hr>
-		</a>
-	</div>
-</div>
-<div class="card">
-	<div class="board">
-		<h3>
-			<a href="/389237">새내기게시판</a>
-		</h3>
-		<a class="article" href="/389237/v/181814899">
-			<p>내일 불금 선착 2명 술사줌 쪽지 ㄱ</p> <time>방금</time>
-			<ul class="status">
-				<li class="vote active">0</li>
-				<li class="comment active">0</li>
-			</ul>
-			<hr>
-		</a> <a class="article" href="/389237/v/181779638">
-			<p>기초학력평가 비대면 신청은 그냥 자기가 원하는 날짜 쓰면 되는거야?</p> <time>방금</time>
-			<ul class="status">
-				<li class="vote active">0</li>
-				<li class="comment active">2</li>
-			</ul>
-			<hr>
-		</a>
+	<div class="board" id="104-board" data-id="104">
+		<h3><a id="104" href="javasrcipt:void(0)" onclick="goArticleList(this); return false;">새내기게시판</a></h3>
+			
 	</div>
 </div>
