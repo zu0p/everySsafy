@@ -28,7 +28,7 @@ public class ArticleDaoImpl implements ArticleDao{
 		try {
 			conn=DBUtil.getConnect();
 			String sql ="insert into article (articleTitle,articleContent,boardId,userId)";
-			sql+= "values (?,?,?,?,?)";
+			sql+= "values (?,?,?,?)";
 
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, articleDto.getArticleTitle());

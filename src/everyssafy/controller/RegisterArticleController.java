@@ -26,7 +26,7 @@ public class RegisterArticleController implements Controller {
 		
 		
 			articleDto.setUserId(request.getParameter("userId"));
-			articleDto.setArticleTitle(request.getParameter("articletitle"));
+			articleDto.setArticleTitle(request.getParameter("articleTitle"));
 			articleDto.setArticleContent(request.getParameter("articleContent"));
 			articleDto.setBoardId(Integer.parseInt(request.getParameter("boardId")));
 			
