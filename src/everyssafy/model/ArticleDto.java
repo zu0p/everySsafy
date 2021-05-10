@@ -11,12 +11,16 @@ public class ArticleDto {
 	private Date articleDate;
 	private int boardId;
 	private String userId;
-	
 	public ArticleDto() {
 		// TODO Auto-generated constructor stub
 	}
+
 	public ArticleDto(String articleTitle) {
 		this.articleTitle=articleTitle;
+	}
+	public ArticleDto(String articleTitle, java.sql.Date articleDate) {
+		this.articleTitle=articleTitle;
+		this.articleDate=articleDate;
 	}
 
 	public String getArticleContent() {

@@ -27,7 +27,7 @@
 									console.log(item);
 									let getBoard = `
 										<a class="list" href="/389148/v/181814276">
-											<time>방금</time><p>${'${item.articleTitle}'}</p><hr>
+											<time>${'${item.articleDate}'}</time><p>${'${item.articleTitle}'}</p><hr>
 										</a>`;
 									$(`#${'${curId}'}-board`).append(getBoard);
 								})
@@ -48,10 +48,6 @@
 <div class="card">
 	<div class="board" id="102-board" data-id="102">
 		<h3><a id="102" href="javasrcipt:void(0)" onclick="goArticleList(this); return false;">비밀게시판</a></h3>
-			<div class="needauth">
-				<p>로그인을 한 학생들만<br>이용할 수 있어요!</p>
-				<a href="/login" class="button">로그인</a>
-			</div>
 		</div>
 	</div>
 <div class="card">

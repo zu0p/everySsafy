@@ -1,6 +1,7 @@
 package everyssafy.model.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -57,7 +58,10 @@ public class BoardDaoImpl implements BoardDao{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String sql="select articleTitle from article a join board b on a.boardId=b.boardId where a.boardId=? limit 4";
+		String sql="select articleTitle, articleDate \n" + 
+				"from article a join board b \n" + 
+				"on a.boardId=b.boardId \n" + 
+				"where a.boardId=?  order by articleDate desc limit 4";
 		
 		try {
 			conn=DBUtil.getConnect();
@@ -66,8 +70,10 @@ public class BoardDaoImpl implements BoardDao{
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				String articleTitle=rs.getString("articleTitle");
+				Date articleDate=rs.getDate("articleDate");
 				System.out.println(articleTitle);
-				list.add(new ArticleDto(articleTitle));
+				System.out.println(articleDate);
+				list.add(new ArticleDto(articleTitle, articleDate));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
