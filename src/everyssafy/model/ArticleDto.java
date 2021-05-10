@@ -11,6 +11,7 @@ public class ArticleDto {
 	private Date articleDate;
 	private int boardId;
 	private String userId;
+  
 	public ArticleDto() {
 		// TODO Auto-generated constructor stub
 	}
@@ -22,7 +23,16 @@ public class ArticleDto {
 		this.articleTitle=articleTitle;
 		this.articleDate=articleDate;
 	}
-
+	private int Comcnt;
+	
+	
+	public int getComcnt() {
+		return Comcnt;
+	}
+	public void setComcnt(int comcnt) {
+		Comcnt = comcnt;
+	}
+  
 	public String getArticleContent() {
 		return articleContent;
 	}

@@ -34,14 +34,14 @@ public class BoardDaoImpl implements BoardDao{
 			conn=DBUtil.getConnect();
 			//sql문 삽입필요..
 			// select boardTitle from board where boardid = 101;
-			String sql = "select boardTitle from board where boardid = ?";
+			String sql = "select boardTitle from board where boardId = ?";
 			
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, BoardId);
 			
-			pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				BoardTitle = rs.getString(1);
+				BoardTitle = rs.getString("boardTitle");
 			}
 				
 		} catch (SQLException e) {
