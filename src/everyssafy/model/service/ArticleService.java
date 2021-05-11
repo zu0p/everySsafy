@@ -20,4 +20,7 @@ public interface ArticleService {
 	
 	//글 조회
 	List<ArticleDto> getListArticle(int BoardId);
+	
+	//내가 쓴글 조회
+	List<ArticleDto> getMyrticle(String userId);
 }

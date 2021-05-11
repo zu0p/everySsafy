@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import everyssafy.model.ArticleDto;
 import util.DBUtil;
@@ -163,5 +164,44 @@ public class ArticleDaoImpl implements ArticleDao{
 
 		return articleList;
 	}
+	@Override
+	public List<ArticleDto> getMyrticle(String userId) {
+		// TODO Auto-generated method stub
+		ArrayList<ArticleDto> articleList = new ArrayList<>();
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs =null;
+		ArticleDto articleDto = null;
+		System.out.println(userId);
+		try {
+			conn = DBUtil.getConnect();
+			String sql = "select a.articleId ,articleTitle ,articleContent ,articleDate ,articleLike,boardId,a.userId, count(commentId) as Comcnt ";
+					sql+="from article a left outer join comment c ";
+					sql+="on a.articleId= c.articleId ";
+					sql+="where a.userId=? ";
+					sql+="group by articleId";
+			
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				articleDto = new  ArticleDto();
+				articleDto.setArticleId(rs.getInt("ArticleId"));
+				articleDto.setArticleDate(rs.getDate("ArticleDate"));
+				articleDto.setArticleContent(rs.getString("articleContent"));
+				articleDto.setArticleLike(rs.getInt("ArticleLike"));
+				articleDto.setArticleTitle(rs.getString("ArticleTitle"));
+				articleDto.setBoardId(rs.getInt("BoardId"));
+				articleDto.setUserId(rs.getString("userId"));
+				articleDto.setComcnt(rs.getInt("Comcnt"));
+				articleList.add(articleDto);
+			}
 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return articleList;
+	}
 }
