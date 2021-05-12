@@ -58,7 +58,7 @@ function registArticle()
 						style="background-image: url('./더미이미지.jfif');">
 				</div>
 				<h2 class="medium">제목 : ${'${articletitle}'} </h2>
-				<p class="small">내용:  ${'${content}'} </p> <time class="small">temp</time>
+				<p class="small">내용:  ${'${content}'} </p> <time class="small"> 방금</time>
 				<h3 class="small">익명</h3>
 				<ul class="status">
 					<li class="attach">1</li>

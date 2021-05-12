@@ -57,12 +57,11 @@ function goArticleList(event){
 									style="background-image: url('./더미이미지.jfif');">
 							</div>
 							<h2 class="medium">제목 : ${'${item.articleTitle}'} </h2>
-							<p class="small">내용: ${'${item.articleContent}'} </p> <time class="small">temp</time>
+							<p class="small">내용: ${'${item.articleContent}'} </p> <time class="small">${'${item.articleDate}'}</time>
 							<h3 class="small">익명</h3>
 							<ul class="status">
-								<li class="attach">1</li>
 								<li title="공감" class="vote">${'${item.articleLike}'} </li>
-								<li title="댓글" class="comment"> 댓글cnt </li>
+								<li title="댓글" class="comment"> ${'${item.Comcnt}'} </li>
 							</ul>
 							<hr> 
 							<div class="comments"></div>
