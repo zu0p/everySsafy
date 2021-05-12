@@ -13,8 +13,7 @@ import com.google.gson.Gson;
 import everyssafy.model.ArticleDto;
 import everyssafy.model.service.ArticleServiceImpl;
 
-public class GetListArticleController implements Controller{
-
+public class GetMyArticleListController implements Controller{
 	private class Returns{
 		List<ArticleDto> list;
 		String path;
@@ -30,15 +29,16 @@ public class GetListArticleController implements Controller{
 			throws ServletException, IOException {
 		
 		String path = "";
-		int boardId = Integer.parseInt(request.getParameter("boardId"));
+		String userId = request.getParameter("userId");
 		
 		List<ArticleDto> ArticleList = null;
-		
 		path = "/articleform.jsp";
 		try {
-			ArticleList = (List<ArticleDto>) ArticleServiceImpl.getArticleService().getListArticle(boardId);
+			ArticleList = (List<ArticleDto>) ArticleServiceImpl.getArticleService().getMyrticle(userId);
 			//request.setAttribute("ArticleList", ArticleList);
-			
+			for (int i = 0; i < ArticleList.size(); i++) {
+				System.out.println(ArticleList.get(i).getArticleTitle());
+			}
 			Returns returns = new Returns(ArticleList, path);
 			
 			Gson gson = new Gson();
@@ -56,4 +56,5 @@ public class GetListArticleController implements Controller{
 		return null;
 	}
 
+	
 }

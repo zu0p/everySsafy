@@ -41,5 +41,10 @@ public class ArticleServiceImpl implements ArticleService{
 	public List<ArticleDto> getListArticle( int BoardId) {
 		return ArticleDaoImpl.getArticleDao().getListArticle(BoardId);
 	}
+	@Override
+	public List<ArticleDto> getMyrticle(String userId) {
+		// TODO Auto-generated method stub
+		return ArticleDaoImpl.getArticleDao().getMyrticle(userId);
+	}
 
 }

@@ -2,6 +2,7 @@ package everyssafy.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,9 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import everyssafy.model.ArticleDto;
-import everyssafy.model.service.ArticleServiceImpl;
+import everyssafy.model.BoardDto;
+import everyssafy.model.service.BoardService;
+import everyssafy.model.service.BoardServiceImpl;
 
-public class GetListArticleController implements Controller{
+public class GetBoardListController implements Controller{
 
 	private class Returns{
 		List<ArticleDto> list;
@@ -25,21 +28,19 @@ public class GetListArticleController implements Controller{
 			this.path = path;
 		}
 	}
+	
 	@Override
 	public String requestHandle(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String path = "";
+		String path = "";	
+		List<ArticleDto> articleList = null;
 		int boardId = Integer.parseInt(request.getParameter("boardId"));
-		
-		List<ArticleDto> ArticleList = null;
-		
-		path = "/articleform.jsp";
+		path = "/main.jsp";
 		try {
-			ArticleList = (List<ArticleDto>) ArticleServiceImpl.getArticleService().getListArticle(boardId);
+			articleList = (List<ArticleDto>) BoardServiceImpl.getBoardService().getList(boardId);
 			//request.setAttribute("ArticleList", ArticleList);
-			
-			Returns returns = new Returns(ArticleList, path);
+			Returns returns = new Returns(articleList, path);
 			
 			Gson gson = new Gson();
 			String result = gson.toJson(returns);
@@ -52,7 +53,6 @@ public class GetListArticleController implements Controller{
 			path = "/error/error500.jsp";
 			return path;
 		}
-		
 		return null;
 	}
 

@@ -1,5 +1,8 @@
 package everyssafy.model.service;
+import java.util.List;
+
 import everyssafy.model.ArticleDto;
+import everyssafy.model.BoardDto;
 import everyssafy.model.dao.BoardDaoImpl;
 
 public class BoardServiceImpl implements BoardService{
@@ -16,6 +19,10 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public String getBoardTitle(int BoardId) {
 		return  BoardDaoImpl.getBoardDao().getBoardTitle(BoardId);
+	}
+	@Override
+	public List<ArticleDto> getList(int BoardId) {
+		return BoardDaoImpl.getBoardDao().getList(BoardId);
 	}
 
 }

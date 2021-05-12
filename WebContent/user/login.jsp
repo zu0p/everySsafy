@@ -39,6 +39,7 @@
 	<div id="container">
 		<div class="logoPart">
 			<i class="fas fa-user-secret fa-10x">
+			
 				<span>지금 에브리싸피를 시작해보세요!!</span>
 			</i>
 		</div>		
