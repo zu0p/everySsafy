@@ -50,14 +50,18 @@ function goArticleList(event){
 				//console.log($('#articleName').val())
 				$.each(info.list, function(index, item){
 					let newArticle = `
-						<article onclick="loadComment(this)" id="helloworld!!!!">
-							<h2 class="medium" id=${"${item.articleId}"}>제목 : ${'${item.articleTitle}'} </h2>
-							<p class="small">내용: ${'${item.articleContent}'} </p> <time class="small">temp</time>
+
+						<article>
+							<a class="article" href="/389148/v/181438459">
+							<div class="attachthumbnail"
+									style="background-image: url('./더미이미지.jfif');">
+							</div>
+							<h2 class="medium">제목 : ${'${item.articleTitle}'} </h2>
+							<p class="small">내용: ${'${item.articleContent}'} </p> <time class="small">${'${item.articleDate}'}</time>
 							<h3 class="small">${'${item.userId}'}</h3>
 							<ul class="status">
-								<li class="attach">1</li>
 								<li title="공감" class="vote">${'${item.articleLike}'} </li>
-								<li title="댓글" class="comment"> 댓글cnt </li>
+								<li title="댓글" class="comment"> ${'${item.Comcnt}'} </li>
 							</ul>
 							<hr> 
 							<div class="comments"></div>
