@@ -41,7 +41,6 @@ function goArticleList(event){
 			//console.log(info.user);
 			//let curClass = $('#changeable').attr('class');
 			//console.log("before: "+curClass);
-			$('#changeable').addClass("articles");
 			//console.log("after: "+$('#changeable').attr('class'));
 			$('#changeable').load("http://localhost:8080/tetetmp"+info.path, function(){
 				//$('#info-id').text(info.user.userId);
@@ -51,14 +50,10 @@ function goArticleList(event){
 				//console.log($('#articleName').val())
 				$.each(info.list, function(index, item){
 					let newArticle = `
-						<article>
-							<a class="article" href="/389148/v/181438459">
-							<div class="attachthumbnail"
-									style="background-image: url('./더미이미지.jfif');">
-							</div>
-							<h2 class="medium">제목 : ${'${item.articleTitle}'} </h2>
+						<article onclick="loadComment(this)" id="helloworld!!!!">
+							<h2 class="medium" id=${"${item.articleId}"}>제목 : ${'${item.articleTitle}'} </h2>
 							<p class="small">내용: ${'${item.articleContent}'} </p> <time class="small">temp</time>
-							<h3 class="small">익명</h3>
+							<h3 class="small">${'${item.userId}'}</h3>
 							<ul class="status">
 								<li class="attach">1</li>
 								<li title="공감" class="vote">${'${item.articleLike}'} </li>
@@ -73,6 +68,86 @@ function goArticleList(event){
 		}
 	})
 }
+function loadComment(target){
+	let id=$(target).children('h2').attr("id");
+	let content=$(target).children('p').text();
+	let userId=$(target).children('h3').text();
+	let boardName=$('#articleName').text();
+	let like=$(target).children('ul').children('.vote').val();
+	let commentCnt=$(target).children('ul').children('.comment').val();
+
+	$.ajax({
+		url:'${root}/getlistcommnet.do',
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		data:{"articleId":id},
+		datatype: 'JSON',
+		method:'get',
+		success:function(data){
+			let info = JSON.parse(data);
+			console.log(info);
+			$('#changeable').empty();
+			$('#changeable').addClass("articles");//뭐해야함?
+			$('#changeable').load("http://localhost:8080/tetetmp"+info.path, function(){
+				let titleStr=`
+					<h1 id="boardTitle">${'${boardName}'}</h1>
+					`;
+				$('.title').append(titleStr);
+				let articleStr=`
+					<div class="article_info" id=${'${id}'}>
+					<div class="article_member">
+						<i class="fas fa-portrait fa-3x"></i>
+						<div class="profile">
+							<h3 id="articleUserName">${'${userId}'}</h3>
+							<time>방금</time>
+						</div>
+					</div>
+					<div class="article_send">
+						<a href="#">쪽지</a>
+						<a href="#">신고</a>
+					</div>	
+				</div>
+				<div class="article_content">
+					<p id="articleContent">${'${content}'}</p>
+				</div>
+				<div class="article_cnt">
+				    <i class="far fa-star fa-1x"></i>
+					<i class="far fa-comment fa-1x">${'${commentCnt}'}</i>
+					<i class="far fa-thumbs-up fa-1x">${'${like}'}</i>
+				</div>
+			`;
+			$('.main').append(articleStr);
+				$.each(info.list,function(index,comment){
+					let str=`
+						<li>
+						<div class="main">
+							<div class="comment_info">
+								<div class="comment_member">
+									<i class="fas fa-portrait fa-2x"></i>
+									<div class="profile">
+										<h3>${'${comment.userId }'}</h3>
+									</div>
+								</div>
+								<div class="article_send">
+									<a href="#">대댓글</a>
+									<a href="#">공감</a>
+									<a href="#">쪽지</a>
+									<a href="#">신고</a>
+								</div>
+							</div>
+							<div class="article_content">
+								<p>${'${comment.commentContent }'}</p>
+							</div>
+							<time>${'${comment.commentDate}'}</time>
+						</div>
+					</li>
+					`;
+					$('#list').append(str);
+				})
+			});
+		}
+	});
+}
+
 	$(document).ready(function(){
 		var ele = document.getElementsByClassName('board');
 		console.log(ele);
@@ -105,6 +180,7 @@ function goArticleList(event){
 		// Handler for .ready() called.
 		
 	});
+
 </script>
 <div class="card">
 		<div class="board" id="101-board" data-id="101">
