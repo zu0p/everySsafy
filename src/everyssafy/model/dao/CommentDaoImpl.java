@@ -134,7 +134,7 @@ public class CommentDaoImpl implements CommentDao {
 			conn = DBUtil.getConnect();
 
 			String sql = "select * from comment" ;
-			sql +="where articleId = ?";
+			sql +=" where articleId = ?";
 
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, articleId);
@@ -155,9 +155,8 @@ public class CommentDaoImpl implements CommentDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			DBUtil.close(rs ,conn , pstmt);
+			DBUtil.close(rs ,pstmt, conn);
 		}
-
 		return commentList;
 	}
 
